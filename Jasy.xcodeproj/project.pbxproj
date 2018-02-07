@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709DDD5202931B200760D87 /* AppDelegate.swift */; };
-		E709DDD8202931B200760D87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709DDD7202931B200760D87 /* ViewController.swift */; };
 		E709DDDB202931B200760D87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E709DDD9202931B200760D87 /* Main.storyboard */; };
 		E709DDDE202931B200760D87 /* Jasy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E709DDDC202931B200760D87 /* Jasy.xcdatamodeld */; };
 		E709DDE0202931B200760D87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E709DDDF202931B200760D87 /* Assets.xcassets */; };
 		E709DDE3202931B200760D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E709DDE1202931B200760D87 /* LaunchScreen.storyboard */; };
+		E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76ED12E202A8B2A000B65D9 /* Constants.swift */; };
+		E76ED131202A8C36000B65D9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76ED130202A8C36000B65D9 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E709DDD2202931B200760D87 /* Jasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E709DDD5202931B200760D87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E709DDD7202931B200760D87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E709DDDA202931B200760D87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E709DDDD202931B200760D87 /* Jasy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jasy.xcdatamodel; sourceTree = "<group>"; };
 		E709DDDF202931B200760D87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E709DDE2202931B200760D87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E709DDE4202931B200760D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E76ED12E202A8B2A000B65D9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E76ED130202A8C36000B65D9 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		E709DDD4202931B200760D87 /* Jasy */ = {
 			isa = PBXGroup;
 			children = (
+				E76ED135202A8D2D000B65D9 /* Supporting Files */,
+				E76ED134202A8D25000B65D9 /* View */,
+				E76ED133202A8D20000B65D9 /* Model */,
+				E76ED132202A8D10000B65D9 /* Controller */,
 				E709DDD5202931B200760D87 /* AppDelegate.swift */,
-				E709DDD7202931B200760D87 /* ViewController.swift */,
 				E709DDD9202931B200760D87 /* Main.storyboard */,
-				E709DDDF202931B200760D87 /* Assets.xcassets */,
-				E709DDE1202931B200760D87 /* LaunchScreen.storyboard */,
 				E709DDE4202931B200760D87 /* Info.plist */,
 				E709DDDC202931B200760D87 /* Jasy.xcdatamodeld */,
+				E76ED12E202A8B2A000B65D9 /* Constants.swift */,
 			);
 			path = Jasy;
+			sourceTree = "<group>";
+		};
+		E76ED132202A8D10000B65D9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E76ED133202A8D20000B65D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E76ED134202A8D25000B65D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E76ED135202A8D2D000B65D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E709DDDF202931B200760D87 /* Assets.xcassets */,
+				E709DDE1202931B200760D87 /* LaunchScreen.storyboard */,
+				E76ED130202A8C36000B65D9 /* Util.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E709DDD8202931B200760D87 /* ViewController.swift in Sources */,
 				E709DDDE202931B200760D87 /* Jasy.xcdatamodeld in Sources */,
+				E76ED131202A8C36000B65D9 /* Util.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
+				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
