@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */; };
+		E7037891202D382D00052916 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7037890202D382D00052916 /* PicturesViewController.swift */; };
+		E7037893202D397C00052916 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7037892202D397C00052916 /* CustomLayout.swift */; };
 		E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709DDD5202931B200760D87 /* AppDelegate.swift */; };
 		E709DDDB202931B200760D87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E709DDD9202931B200760D87 /* Main.storyboard */; };
 		E709DDDE202931B200760D87 /* Jasy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E709DDDC202931B200760D87 /* Jasy.xcdatamodeld */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		E7037890202D382D00052916 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
+		E7037892202D397C00052916 /* CustomLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		E709DDD2202931B200760D87 /* Jasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E709DDD5202931B200760D87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E709DDDA202931B200760D87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		E76ED132202A8D10000B65D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E7037890202D382D00052916 /* PicturesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -88,6 +95,7 @@
 		E76ED134202A8D25000B65D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,6 +105,7 @@
 			children = (
 				E709DDDF202931B200760D87 /* Assets.xcassets */,
 				E709DDE1202931B200760D87 /* LaunchScreen.storyboard */,
+				E7037892202D397C00052916 /* CustomLayout.swift */,
 				E76ED130202A8C36000B65D9 /* Util.swift */,
 			);
 			path = "Supporting Files";
@@ -176,8 +185,11 @@
 			files = (
 				E709DDDE202931B200760D87 /* Jasy.xcdatamodeld in Sources */,
 				E76ED131202A8C36000B65D9 /* Util.swift in Sources */,
+				E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */,
+				E7037893202D397C00052916 /* CustomLayout.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
+				E7037891202D382D00052916 /* PicturesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
