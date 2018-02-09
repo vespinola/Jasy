@@ -34,7 +34,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gmy-8P-s0e" customClass="PictureCollectionViewCell" customModule="Jasy" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureCellID" id="gmy-8P-s0e" customClass="PictureCollectionViewCell" customModule="Jasy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="126"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -83,6 +83,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" selectedImage="ic_search_white" id="UOw-mx-ERa"/>
                     <connections>
+                        <outlet property="collectionView" destination="ay8-gX-BpW" id="a6C-za-Vzg"/>
                         <outlet property="titleLabel" destination="pih-ej-AXG" id="SyF-a4-hyp"/>
                     </connections>
                 </viewController>
