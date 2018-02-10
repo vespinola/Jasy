@@ -130,5 +130,20 @@ extension UIImageView {
     }
 }
 
+//from http://ioscake.com/how-to-get-start-date-and-end-date-of-the-current-month-swift-3.html
+extension Date {
+    func startOfMonth() -> Date? {
+        let comp: DateComponents = Calendar.current.dateComponents([.year, .month, .hour], from: Calendar.current.startOfDay(for: self))
+        return Calendar.current.date(from: comp)!
+    }
+    
+    func endOfMonth() -> Date? {
+        var comp: DateComponents = Calendar.current.dateComponents([.month, .day, .hour], from: Calendar.current.startOfDay(for: self))
+        comp.month = 1
+        comp.day = -1
+        return Calendar.current.date(byAdding: comp, to: self.startOfMonth()!)
+    }
+}
+
 
 

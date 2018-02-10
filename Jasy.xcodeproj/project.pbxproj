@@ -17,6 +17,9 @@
 		E709DDE3202931B200760D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E709DDE1202931B200760D87 /* LaunchScreen.storyboard */; };
 		E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76ED12E202A8B2A000B65D9 /* Constants.swift */; };
 		E76ED131202A8C36000B65D9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76ED130202A8C36000B65D9 /* Util.swift */; };
+		E7938F73202F4BA000479224 /* NasaHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F72202F4BA000479224 /* NasaHandler.swift */; };
+		E7938F75202F56EF00479224 /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F74202F56EF00479224 /* Apod.swift */; };
+		E7938F77202F59EA00479224 /* NasaConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F76202F59EA00479224 /* NasaConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		E709DDE4202931B200760D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E76ED12E202A8B2A000B65D9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E76ED130202A8C36000B65D9 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		E7938F72202F4BA000479224 /* NasaHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NasaHandler.swift; sourceTree = "<group>"; };
+		E7938F74202F56EF00479224 /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
+		E7938F76202F59EA00479224 /* NasaConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		E76ED133202A8D20000B65D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7938F71202F4B7500479224 /* Client */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +116,16 @@
 				E76ED130202A8C36000B65D9 /* Util.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7938F71202F4B7500479224 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				E7938F72202F4BA000479224 /* NasaHandler.swift */,
+				E7938F74202F56EF00479224 /* Apod.swift */,
+				E7938F76202F59EA00479224 /* NasaConvenience.swift */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,12 +201,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E709DDDE202931B200760D87 /* Jasy.xcdatamodeld in Sources */,
+				E7938F77202F59EA00479224 /* NasaConvenience.swift in Sources */,
 				E76ED131202A8C36000B65D9 /* Util.swift in Sources */,
 				E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */,
 				E7037893202D397C00052916 /* CustomLayout.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
+				E7938F75202F56EF00479224 /* Apod.swift in Sources */,
 				E7037891202D382D00052916 /* PicturesViewController.swift in Sources */,
+				E7938F73202F4BA000479224 /* NasaHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

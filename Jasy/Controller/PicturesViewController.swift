@@ -26,6 +26,12 @@ class PicturesViewController: UIViewController {
         collectionView.collectionViewLayout.invalidateLayout()
         super.viewDidLayoutSubviews()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NasaHandler.shared().getPhotoOfTheDays(in: self)
+    }
 
 }
 
