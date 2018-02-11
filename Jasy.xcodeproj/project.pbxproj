@@ -24,6 +24,7 @@
 		E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */; };
 		E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */; };
 		E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */; };
+		E7DDC0492030DE1500E378C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7DDC0482030DE1500E378C2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E7DDC0482030DE1500E378C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				E709DDD5202931B200760D87 /* AppDelegate.swift */,
 				E709DDD9202931B200760D87 /* Main.storyboard */,
 				E709DDE4202931B200760D87 /* Info.plist */,
+				E7DDC0482030DE1500E378C2 /* GoogleService-Info.plist */,
 				E709DDDC202931B200760D87 /* Jasy.xcdatamodeld */,
 				E76ED12E202A8B2A000B65D9 /* Constants.swift */,
 			);
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E709DDE3202931B200760D87 /* LaunchScreen.storyboard in Resources */,
+				E7DDC0492030DE1500E378C2 /* GoogleService-Info.plist in Resources */,
 				E709DDE0202931B200760D87 /* Assets.xcassets in Resources */,
 				E709DDDB202931B200760D87 /* Main.storyboard in Resources */,
 			);
@@ -468,7 +472,7 @@
 				DEVELOPMENT_TEAM = LXE5SAW38H;
 				INFOPLIST_FILE = Jasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = udacity.Jasy;
+				PRODUCT_BUNDLE_IDENTIFIER = udacity.jasy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -484,7 +488,7 @@
 				DEVELOPMENT_TEAM = LXE5SAW38H;
 				INFOPLIST_FILE = Jasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = udacity.Jasy;
+				PRODUCT_BUNDLE_IDENTIFIER = udacity.jasy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
