@@ -18,8 +18,10 @@
 		E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76ED12E202A8B2A000B65D9 /* Constants.swift */; };
 		E76ED131202A8C36000B65D9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76ED130202A8C36000B65D9 /* Util.swift */; };
 		E7938F73202F4BA000479224 /* NasaHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F72202F4BA000479224 /* NasaHandler.swift */; };
-		E7938F75202F56EF00479224 /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F74202F56EF00479224 /* Apod.swift */; };
+		E7938F75202F56EF00479224 /* ApodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F74202F56EF00479224 /* ApodModel.swift */; };
 		E7938F77202F59EA00479224 /* NasaConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F76202F59EA00479224 /* NasaConvenience.swift */; };
+		E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */; };
+		E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +38,10 @@
 		E76ED12E202A8B2A000B65D9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E76ED130202A8C36000B65D9 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		E7938F72202F4BA000479224 /* NasaHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NasaHandler.swift; sourceTree = "<group>"; };
-		E7938F74202F56EF00479224 /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
+		E7938F74202F56EF00479224 /* ApodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodModel.swift; sourceTree = "<group>"; };
 		E7938F76202F59EA00479224 /* NasaConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaConvenience.swift; sourceTree = "<group>"; };
+		E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 		E76ED133202A8D20000B65D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7DDC0382030C24100E378C2 /* Storage */,
 				E7938F71202F4B7500479224 /* Client */,
 			);
 			path = Model;
@@ -122,10 +127,19 @@
 			isa = PBXGroup;
 			children = (
 				E7938F72202F4BA000479224 /* NasaHandler.swift */,
-				E7938F74202F56EF00479224 /* Apod.swift */,
+				E7938F74202F56EF00479224 /* ApodModel.swift */,
 				E7938F76202F59EA00479224 /* NasaConvenience.swift */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		E7DDC0382030C24100E378C2 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */,
+				E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,10 +218,12 @@
 				E7938F77202F59EA00479224 /* NasaConvenience.swift in Sources */,
 				E76ED131202A8C36000B65D9 /* Util.swift in Sources */,
 				E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */,
+				E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */,
 				E7037893202D397C00052916 /* CustomLayout.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
+				E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
-				E7938F75202F56EF00479224 /* Apod.swift in Sources */,
+				E7938F75202F56EF00479224 /* ApodModel.swift in Sources */,
 				E7037891202D382D00052916 /* PicturesViewController.swift in Sources */,
 				E7938F73202F4BA000479224 /* NasaHandler.swift in Sources */,
 			);

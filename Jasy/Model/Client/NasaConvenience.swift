@@ -9,7 +9,7 @@
 import UIKit
 
 extension NasaHandler {
-    func getPhotoOfTheDays(in viewController: UIViewController, onCompletion: (([Apod]) -> Void)? = nil) {
+    func getPhotoOfTheDays(in viewController: UIViewController, onCompletion: (([ApodModel]) -> Void)? = nil) {
         let date = Date()
         
         let dateFormatter = DateFormatter()
@@ -32,11 +32,10 @@ extension NasaHandler {
             
             let dictionary = data as! [JDictionary]
             
-            print(dictionary)
+            let apods = ApodModel.photosFromResults(dictionary)
             
-            let apods = Apod.photosFromResults(dictionary)
+            onCompletion?(apods)
             
-            print(apods)
         }
         
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Apod {
+struct ApodModel {
     var date: String!
     var explanation: String!
     var hdurl: String!
@@ -31,21 +31,24 @@ struct Apod {
     
 }
 
-extension Apod {
-    static func photosFromResults(_ results: [JDictionary]) -> [Apod] {
+extension ApodModel {
+    var image: UIImage?
+    var hdImage: UIImage?
+    
+    static func photosFromResults(_ results: [JDictionary]) -> [ApodModel] {
         
-        var apods: [Apod] = []
+        var apods: [ApodModel] = []
         
         for result in results {
-            apods.append(Apod(with: result))
+            apods.append(ApodModel(with: result))
         }
         
         return apods
     }
 }
 
-extension Apod: Equatable {}
+extension ApodModel: Equatable {}
 
-func ==(lhs: Apod, rhs: Apod) -> Bool {
+func ==(lhs: ApodModel, rhs: ApodModel) -> Bool {
     return lhs.date == rhs.date
 }
