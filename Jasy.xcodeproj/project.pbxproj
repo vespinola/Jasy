@@ -22,6 +22,7 @@
 		E7938F77202F59EA00479224 /* NasaConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F76202F59EA00479224 /* NasaConvenience.swift */; };
 		E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */; };
 		E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */; };
+		E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E7938F76202F59EA00479224 /* NasaConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaConvenience.swift; sourceTree = "<group>"; };
 		E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		E7DDC0382030C24100E378C2 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */,
 				E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */,
 				E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */,
 			);
@@ -220,6 +223,7 @@
 				E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */,
 				E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */,
 				E7037893202D397C00052916 /* CustomLayout.swift in Sources */,
+				E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
 				E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,

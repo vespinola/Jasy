@@ -32,8 +32,6 @@ struct ApodModel {
 }
 
 extension ApodModel {
-    var image: UIImage?
-    var hdImage: UIImage?
     
     static func photosFromResults(_ results: [JDictionary]) -> [ApodModel] {
         
