@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		702F85B9800FEA85E1FEEF72 /* Pods_Jasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95771650EE710C2B17B15F8D /* Pods_Jasy.framework */; };
 		E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */; };
 		E7037891202D382D00052916 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7037890202D382D00052916 /* PicturesViewController.swift */; };
 		E7037893202D397C00052916 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7037892202D397C00052916 /* CustomLayout.swift */; };
@@ -26,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34FF4DFC06896E98CE58BCC7 /* Pods-Jasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasy/Pods-Jasy.release.xcconfig"; sourceTree = "<group>"; };
+		8478C2DFB7F0505905117610 /* Pods-Jasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasy/Pods-Jasy.debug.xcconfig"; sourceTree = "<group>"; };
+		95771650EE710C2B17B15F8D /* Pods_Jasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7037890202D382D00052916 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
 		E7037892202D397C00052916 /* CustomLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
@@ -51,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702F85B9800FEA85E1FEEF72 /* Pods_Jasy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63C3D89A29098B7918AF2E4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8478C2DFB7F0505905117610 /* Pods-Jasy.debug.xcconfig */,
+				34FF4DFC06896E98CE58BCC7 /* Pods-Jasy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9313B5F5144121FAF9F87025 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95771650EE710C2B17B15F8D /* Pods_Jasy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E709DDC9202931B200760D87 = {
 			isa = PBXGroup;
 			children = (
 				E709DDD4202931B200760D87 /* Jasy */,
 				E709DDD3202931B200760D87 /* Products */,
+				63C3D89A29098B7918AF2E4D /* Pods */,
+				9313B5F5144121FAF9F87025 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,9 +176,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E709DDE7202931B200760D87 /* Build configuration list for PBXNativeTarget "Jasy" */;
 			buildPhases = (
+				48046509532E0A9F5EAB33F2 /* [CP] Check Pods Manifest.lock */,
 				E709DDCE202931B200760D87 /* Sources */,
 				E709DDCF202931B200760D87 /* Frameworks */,
 				E709DDD0202931B200760D87 /* Resources */,
+				49863C29274F3B4BFFFDCA2C /* [CP] Embed Pods Frameworks */,
+				19DDF61110B08F3792BEB682 /* [CP] Copy Pods Resources */,
+				E7DDC0472030D23600E378C2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -211,6 +239,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19DDF61110B08F3792BEB682 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jasy/Pods-Jasy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48046509532E0A9F5EAB33F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Jasy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49863C29274F3B4BFFFDCA2C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Jasy/Pods-Jasy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jasy/Pods-Jasy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7DDC0472030D23600E378C2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 67a64abf84246b79bf1088090ee7128187234f73 daea33522bbb44364890dead1cfe4fc2b3dccf3a2b768551f9ade1de611f3b3e\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E709DDCE202931B200760D87 /* Sources */ = {
@@ -364,6 +461,7 @@
 		};
 		E709DDE8202931B200760D87 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8478C2DFB7F0505905117610 /* Pods-Jasy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,6 +477,7 @@
 		};
 		E709DDE9202931B200760D87 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34FF4DFC06896E98CE58BCC7 /* Pods-Jasy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
