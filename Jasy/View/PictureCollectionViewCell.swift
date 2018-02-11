@@ -21,11 +21,10 @@ class PictureCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        picture.contentMode = .scaleAspectFit
+        picture.contentMode = .scaleAspectFill
         picture.image = UIImage(named: "alien-martian")
         
         label.lineBreakMode = .byClipping
         label.numberOfLines = 0
-        label.text = "Amazing"
     }
 }

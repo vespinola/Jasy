@@ -12,6 +12,8 @@ class PicturesViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var apods: [ApodModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +32,21 @@ class PicturesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        NasaHandler.shared().getPhotoOfTheDays(in: self)
+        if !ApodModel.apods.isEmpty {
+            apods = ApodModel.apods
+            performUIUpdatesOnMain {
+                self.collectionView.reloadData()
+            }
+        } else {
+            NasaHandler.shared().getPhotoOfTheDays(in: self) {  apods in
+                ApodModel.apods = apods
+                self.apods = apods
+                
+                performUIUpdatesOnMain {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
     }
 
 }
@@ -39,30 +55,29 @@ class PicturesViewController: UIViewController {
 extension PicturesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return fetchedResultsController?.sections?.first?.numberOfObjects ?? 0
-        return 40
+        return apods.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCellID", for: indexPath) as! PictureCollectionViewCell
         
+        var currentApod = apods[indexPath.row]
         
         
-//        if let image = photo.image {
-//            cell.photoImageView.image = UIImage(data: image as Data)
-//        } else if let link = photo.url {
-//
-//            Util.downloadImageFrom(link: link) { image in
-//                photo.image = image as NSData
-//
-//                performUIUpdatesOnMain {
-//                    cell.photoImageView.image = UIImage(data: image)
-//                }
-//
-//                AppDelegate.stack?.performBackgroundBatchOperation({ backgroundContext in
-//                    backgroundContext.parent = AppDelegate.stack?.context
-//                })
-//            }
-//        }
+        if let image = currentApod.image {
+            cell.picture.image = UIImage(data: image as Data)
+        } else if let link = currentApod.url {
+
+            Util.downloadImageFrom(link: link) { image in
+                currentApod.image = image
+
+                performUIUpdatesOnMain {
+                    cell.picture.image = UIImage(data: image)
+                }
+            }
+        }
+        
+        cell.label.text = currentApod.title
         
         return cell
     }

@@ -9,6 +9,9 @@
 import UIKit
 
 struct ApodModel {
+    
+    static var apods: [ApodModel] = []
+    
     var date: String!
     var explanation: String!
     var hdurl: String!
@@ -17,6 +20,9 @@ struct ApodModel {
     var title: String!
     var url: String!
     var copyright: String?
+    
+    var image: Data?
+    var hdImage: Data?
     
     init(with dictionary :JDictionary) {
         date = dictionary["date"] as! String
