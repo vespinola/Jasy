@@ -8,28 +8,57 @@
 
 import UIKit
 
-class ApodDetailViewController: UIViewController {
-
+class ApodDetailViewController: CustomViewController {
+    @IBOutlet weak var picture: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var infoButton: UIButton!
+    
+    var hdurl: String!
+    var apod: ApodModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        title = apod.title
+        
+        picture.contentMode = .scaleAspectFit
+        picture.backgroundColor = UIColor.black
+        
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 5.0
+        scrollView.delegate = self
+        scrollView.backgroundColor = UIColor.black
+        
+        let origImage = UIImage(named: "ic_info_outline")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        infoButton.setImage(tintedImage, for: .normal)
+        infoButton.tintColor = .white
+        
+        if let hdimage = apod.hdImage {
+            performUIUpdatesOnMain {
+                self.picture.image = UIImage(data: hdimage)
+            }
+        } else {
+            showActivityIndicatory()
+            
+            Util.downloadImageFrom(link: apod.hdurl) { image in
+                self.hideActivityIndicator()
+                performUIUpdatesOnMain {
+                    self.apod.hdImage = image
+                    self.picture.image = UIImage(data: image)
+                }
+            }
+        }
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func infoButtonOnTap(_ sender: Any) {
+        //TODO
     }
-    */
+}
 
+extension ApodDetailViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return picture
+    }
 }

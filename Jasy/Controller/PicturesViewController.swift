@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PicturesViewController: UIViewController {
+class PicturesViewController: CustomViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -22,15 +22,13 @@ class PicturesViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
     }
     
-    override func viewDidLayoutSubviews() {
-        collectionView.collectionViewLayout.invalidateLayout()
-        super.viewDidLayoutSubviews()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         
         if !ApodModel.apods.isEmpty {
             apods = ApodModel.apods
@@ -47,6 +45,17 @@ class PicturesViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.collectionViewLayout.invalidateLayout()
+        super.viewDidLayoutSubviews()
     }
 
 }
@@ -85,6 +94,13 @@ extension PicturesViewController: UICollectionViewDataSource {
 
 extension PicturesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let apodDetailViewController = storyboard.instantiateViewController(withIdentifier: "ApodDetailViewControllerID") as! ApodDetailViewController
+        apodDetailViewController.apod = apods[indexPath.row]
+        
+        self.navigationController?.pushViewController(apodDetailViewController, animated: true)
         
     }
     

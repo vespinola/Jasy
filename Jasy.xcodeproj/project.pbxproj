@@ -21,6 +21,8 @@
 		E7938F73202F4BA000479224 /* NasaHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F72202F4BA000479224 /* NasaHandler.swift */; };
 		E7938F75202F56EF00479224 /* ApodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F74202F56EF00479224 /* ApodModel.swift */; };
 		E7938F77202F59EA00479224 /* NasaConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7938F76202F59EA00479224 /* NasaConvenience.swift */; };
+		E7D1B8EB2031308E00ADBB0C /* ApodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D1B8EA2031308E00ADBB0C /* ApodDetailViewController.swift */; };
+		E7D1B8ED203138ED00ADBB0C /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D1B8EC203138ED00ADBB0C /* CustomViewController.swift */; };
 		E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */; };
 		E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */; };
 		E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */; };
@@ -46,6 +48,8 @@
 		E7938F72202F4BA000479224 /* NasaHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NasaHandler.swift; sourceTree = "<group>"; };
 		E7938F74202F56EF00479224 /* ApodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodModel.swift; sourceTree = "<group>"; };
 		E7938F76202F59EA00479224 /* NasaConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaConvenience.swift; sourceTree = "<group>"; };
+		E7D1B8EA2031308E00ADBB0C /* ApodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailViewController.swift; sourceTree = "<group>"; };
+		E7D1B8EC203138ED00ADBB0C /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		E7DDC0412030C31A00E378C2 /* Apod+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -119,7 +123,9 @@
 		E76ED132202A8D10000B65D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E7D1B8EC203138ED00ADBB0C /* CustomViewController.swift */,
 				E7037890202D382D00052916 /* PicturesViewController.swift */,
+				E7D1B8EA2031308E00ADBB0C /* ApodDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,10 +331,12 @@
 				E7DDC0432030C31A00E378C2 /* Apod+CoreDataClass.swift in Sources */,
 				E7037893202D397C00052916 /* CustomLayout.swift in Sources */,
 				E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */,
+				E7D1B8EB2031308E00ADBB0C /* ApodDetailViewController.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
 				E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
 				E7938F75202F56EF00479224 /* ApodModel.swift in Sources */,
+				E7D1B8ED203138ED00ADBB0C /* CustomViewController.swift in Sources */,
 				E7037891202D382D00052916 /* PicturesViewController.swift in Sources */,
 				E7938F73202F4BA000479224 /* NasaHandler.swift in Sources */,
 			);
