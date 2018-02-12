@@ -152,6 +152,36 @@
             </objects>
             <point key="canvasLocation" x="1103.2" y="339.58020989505252"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="vSr-xK-epl">
+            <objects>
+                <viewController storyboardIdentifier="InfoViewControllerID" id="qqA-cr-Q55" customClass="InfoViewController" customModule="Jasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HPE-tS-0N3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Xw-j6-dgP">
+                                <rect key="frame" x="20" y="154.5" width="335" height="378"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="378" id="tz7-tN-8MO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JVQ-wM-wRt" firstAttribute="trailing" secondItem="3Xw-j6-dgP" secondAttribute="trailing" constant="20" id="5RH-p4-Mzc"/>
+                            <constraint firstItem="3Xw-j6-dgP" firstAttribute="centerX" secondItem="JVQ-wM-wRt" secondAttribute="centerX" id="RR1-rC-Dix"/>
+                            <constraint firstItem="3Xw-j6-dgP" firstAttribute="leading" secondItem="JVQ-wM-wRt" secondAttribute="leading" constant="20" id="e9M-91-ckc"/>
+                            <constraint firstItem="3Xw-j6-dgP" firstAttribute="centerY" secondItem="JVQ-wM-wRt" secondAttribute="centerY" id="wLF-W0-HR4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JVQ-wM-wRt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P68-yr-uOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1925.5999999999999" y="343.17841079460271"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JL4-RZ-mAk">
             <objects>

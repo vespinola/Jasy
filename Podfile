@@ -9,4 +9,5 @@ target 'Jasy' do
   pod 'Firebase', '~> 4.8'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'R.swift', '~> 4.0'
 end
