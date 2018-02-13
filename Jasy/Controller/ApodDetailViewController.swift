@@ -39,7 +39,7 @@ class ApodDetailViewController: CustomViewController {
                 self.picture.image = UIImage(data: hdimage)
             }
         } else {
-            showActivityIndicatory()
+            showActivityIndicator()
             
             Util.downloadImageFrom(link: apod.hdurl) { image in
                 self.hideActivityIndicator()

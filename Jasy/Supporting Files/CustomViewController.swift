@@ -14,8 +14,6 @@ class CustomViewController: UIViewController {
     
     let alphaPercentage: CGFloat = 0.7
     
-    var activityIndicator: UIActivityIndicatorView!
-    
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>? {
         didSet {
             // Whenever the frc changes, we execute the search and
@@ -32,24 +30,17 @@ class CustomViewController: UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         
-        activityIndicator = UIActivityIndicatorView()
-        activityIndicator.center = self.view.center
-        activityIndicator.backgroundColor = UIColor.black.withAlphaComponent(alphaPercentage)
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        view.addSubview(activityIndicator)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
     
-    func showActivityIndicatory() {
+    func showActivityIndicator() {
         performUIUpdatesOnMain {
             
-            let activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballPulse, color: .red)
+            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballScaleRipple, color: Constants.Color.background)
+            activityIndicator.center = self.view.center
             self.view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
         }
@@ -72,7 +63,7 @@ extension CustomViewController {
             do {
                 try fc.performFetch()
             } catch let e as NSError {
-                print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
+                //print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
             }
         }
     }

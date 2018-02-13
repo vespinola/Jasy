@@ -36,7 +36,11 @@ class PicturesViewController: CustomViewController {
                 self.collectionView.reloadData()
             }
         } else {
+            showActivityIndicator()
+            
             NasaHandler.shared().getPhotoOfTheDays(in: self) {  apods in
+                self.hideActivityIndicator()
+                
                 ApodModel.apods = apods
                 self.apods = apods
                 

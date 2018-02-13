@@ -128,7 +128,6 @@
 		E76ED132202A8D10000B65D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E7D1B8EC203138ED00ADBB0C /* CustomViewController.swift */,
 				E7037890202D382D00052916 /* PicturesViewController.swift */,
 				E7D1B8EA2031308E00ADBB0C /* ApodDetailViewController.swift */,
 				CE6A8F5C203248C9007827A0 /* InfoViewController.swift */,
@@ -159,6 +158,7 @@
 				E709DDDF202931B200760D87 /* Assets.xcassets */,
 				E709DDE1202931B200760D87 /* LaunchScreen.storyboard */,
 				E7037892202D397C00052916 /* CustomLayout.swift */,
+				E7D1B8EC203138ED00ADBB0C /* CustomViewController.swift */,
 				E76ED130202A8C36000B65D9 /* Util.swift */,
 			);
 			path = "Supporting Files";
