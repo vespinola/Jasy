@@ -27,4 +27,9 @@ class PictureCollectionViewCell: UICollectionViewCell {
         label.lineBreakMode = .byClipping
         label.numberOfLines = 0
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        picture.image = R.image.alienMartian()
+    }
 }
