@@ -10,4 +10,5 @@ target 'Jasy' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'R.swift', '~> 4.0'
+  pod 'NVActivityIndicatorView'
 end

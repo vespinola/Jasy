@@ -68,7 +68,7 @@ extension PicturesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCellID", for: indexPath) as! PictureCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.pictureCellID.identifier, for: indexPath) as! PictureCollectionViewCell
         
         var currentApod = apods[indexPath.row]
         
@@ -96,8 +96,7 @@ extension PicturesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let apodDetailViewController = storyboard.instantiateViewController(withIdentifier: "ApodDetailViewControllerID") as! ApodDetailViewController
+        let apodDetailViewController =  R.storyboard.main.apodDetailViewControllerID()!
         apodDetailViewController.apod = apods[indexPath.row]
         
         self.navigationController?.pushViewController(apodDetailViewController, animated: true)

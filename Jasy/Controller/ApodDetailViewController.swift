@@ -29,7 +29,7 @@ class ApodDetailViewController: CustomViewController {
         scrollView.delegate = self
         scrollView.backgroundColor = UIColor.black
         
-        let origImage = UIImage(named: "ic_info_outline")
+        let origImage = R.image.ic_info_outline()
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         infoButton.setImage(tintedImage, for: .normal)
         infoButton.tintColor = .white
@@ -53,7 +53,7 @@ class ApodDetailViewController: CustomViewController {
     }
     
     @IBAction func infoButtonOnTap(_ sender: Any) {
-        //TODO
+        InfoViewController.show(in: self, apod: apod)
     }
 }
 

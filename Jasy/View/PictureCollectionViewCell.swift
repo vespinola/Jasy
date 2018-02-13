@@ -22,7 +22,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         picture.contentMode = .scaleAspectFill
-        picture.image = UIImage(named: "alien-martian")
+        picture.image = R.image.alienMartian()
         
         label.lineBreakMode = .byClipping
         label.numberOfLines = 0

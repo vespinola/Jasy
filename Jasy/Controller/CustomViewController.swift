@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import NVActivityIndicatorView
 
 class CustomViewController: UIViewController {
     
@@ -46,19 +47,19 @@ class CustomViewController: UIViewController {
     }
     
     func showActivityIndicatory() {
-        
         performUIUpdatesOnMain {
-            self.view.isUserInteractionEnabled = false
-            self.activityIndicator.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-            self.activityIndicator.startAnimating()
+            
+            let activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballPulse, color: .red)
+            self.view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
         }
         
     }
     
     func hideActivityIndicator() {
         performUIUpdatesOnMain {
-            self.view.isUserInteractionEnabled = true
-            self.activityIndicator.stopAnimating()
+            guard let lastView = self.view.subviews.last else { return }
+            lastView.removeFromSuperview()
         }
     }
 
