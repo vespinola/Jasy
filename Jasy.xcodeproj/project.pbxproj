@@ -28,6 +28,7 @@
 		E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */; };
 		E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */; };
 		E7DDC0492030DE1500E378C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7DDC0482030DE1500E378C2 /* GoogleService-Info.plist */; };
+		E7F16826203264E500A9F54E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F16825203264E400A9F54E /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E7DDC0422030C31A00E378C2 /* Apod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apod+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7DDC0452030CAD100E378C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E7DDC0482030DE1500E378C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E7F16825203264E400A9F54E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				E76ED133202A8D20000B65D9 /* Model */,
 				E76ED132202A8D10000B65D9 /* Controller */,
 				E709DDD5202931B200760D87 /* AppDelegate.swift */,
+				E7F16825203264E400A9F54E /* R.generated.swift */,
 				E709DDD9202931B200760D87 /* Main.storyboard */,
 				E709DDE4202931B200760D87 /* Info.plist */,
 				E7DDC0482030DE1500E378C2 /* GoogleService-Info.plist */,
@@ -351,6 +354,7 @@
 				E7037893202D397C00052916 /* CustomLayout.swift in Sources */,
 				E7DDC0462030CAD100E378C2 /* CoreDataStack.swift in Sources */,
 				E7D1B8EB2031308E00ADBB0C /* ApodDetailViewController.swift in Sources */,
+				E7F16826203264E500A9F54E /* R.generated.swift in Sources */,
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
 				E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
