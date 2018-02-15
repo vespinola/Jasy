@@ -26,6 +26,9 @@ class PictureCollectionViewCell: UICollectionViewCell {
         
         label.lineBreakMode = .byClipping
         label.numberOfLines = 0
+        
+        contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = Constants.Metric.cornerRadius
     }
     
     override func prepareForReuse() {

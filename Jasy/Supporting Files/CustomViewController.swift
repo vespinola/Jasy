@@ -48,7 +48,7 @@ class CustomViewController: UIViewController {
             self.cover?.tag = 101
             self.view.addSubview(self.cover!)
             
-            self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballScaleRipple, color: Constants.Color.background)
+            self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballTrianglePath, color: Constants.Color.background)
             self.activityIndicator?.center = self.view.center
             self.activityIndicator?.tag = 100
             self.view.addSubview(self.activityIndicator!)

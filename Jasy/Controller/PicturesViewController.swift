@@ -23,6 +23,9 @@ class PicturesViewController: CustomViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        collectionView.backgroundColor = Constants.Color.black
+        view.backgroundColor = Constants.Color.background
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
