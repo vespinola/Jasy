@@ -43,6 +43,7 @@ class InfoViewController: UIViewController {
         textView.isScrollEnabled = true
         textView.layer.cornerRadius = Constants.Metric.cornerRadius
         textView.textContainerInset = UIEdgeInsets(top: 40, left: 20, bottom: 20, right: 20)
+        textView.contentOffset = CGPoint.zero
         
         textView.backgroundColor =  Constants.Color.white.withAlphaComponent(backgroundAlpha)
         view.backgroundColor = Constants.Color.translucent
