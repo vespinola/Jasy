@@ -13,6 +13,8 @@ import NVActivityIndicatorView
 class CustomViewController: UIViewController {
     
     let alphaPercentage: CGFloat = 0.7
+    var activityIndicator: NVActivityIndicatorView? = nil
+    var cover: UIView? = nil
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>? {
         didSet {
@@ -29,27 +31,28 @@ class CustomViewController: UIViewController {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        let window = UIApplication.shared.keyWindow!
+        cover?.frame = CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height)
+        activityIndicator?.center = self.view.center
     }
     
     func showActivityIndicator() {
         performUIUpdatesOnMain {
             let window = UIApplication.shared.keyWindow!
-            let cover = UIView(frame: CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height))
-            cover.backgroundColor = Constants.Color.black.withAlphaComponent(0.6)
-            cover.tag = 101
-            self.view.addSubview(cover)
+            self.cover = UIView(frame: CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height))
+            self.cover?.backgroundColor = Constants.Color.black.withAlphaComponent(0.6)
+            self.cover?.tag = 101
+            self.view.addSubview(self.cover!)
             
-            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballScaleRipple, color: Constants.Color.background)
-            activityIndicator.center = self.view.center
-            activityIndicator.tag = 100
-            self.view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
+            self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballScaleRipple, color: Constants.Color.background)
+            self.activityIndicator?.center = self.view.center
+            self.activityIndicator?.tag = 100
+            self.view.addSubview(self.activityIndicator!)
+            self.activityIndicator?.startAnimating()
         }
         
     }
