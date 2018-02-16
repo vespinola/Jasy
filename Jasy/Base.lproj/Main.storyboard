@@ -45,7 +45,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="126"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-pk-jwd">
-                                                    <rect key="frame" x="16" y="103.5" width="96" height="14.5"/>
+                                                    <rect key="frame" x="16" y="107.5" width="96" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                             <constraint firstItem="ZnE-EV-KFP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gmy-8P-s0e" secondAttribute="leading" symbolic="YES" id="NtC-WL-D5c"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" constant="-16" id="b5d-10-csV"/>
                                             <constraint firstItem="ZnE-EV-KFP" firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" constant="-8" id="f7H-mf-Fe7"/>
-                                            <constraint firstItem="nWe-pk-jwd" firstAttribute="bottom" secondItem="yny-pH-Abn" secondAttribute="bottom" constant="-8" id="nJB-b5-Ngi"/>
+                                            <constraint firstItem="nWe-pk-jwd" firstAttribute="bottom" secondItem="yny-pH-Abn" secondAttribute="bottom" constant="-4" id="nJB-b5-Ngi"/>
                                             <constraint firstItem="yny-pH-Abn" firstAttribute="top" secondItem="gmy-8P-s0e" secondAttribute="top" id="wOe-ek-2P9"/>
                                         </constraints>
                                         <connections>

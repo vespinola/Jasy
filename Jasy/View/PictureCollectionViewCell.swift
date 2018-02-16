@@ -33,7 +33,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
         titleLabel.font = JFont.smallMedium
 
         picture.contentMode = .scaleAspectFill
-        picture.image = R.image.alienMartian()
+        picture.image = R.image.astro()
         
         picture.layer.masksToBounds = true
         picture.layer.cornerRadius = JMetric.cornerRadius
@@ -42,6 +42,6 @@ class PictureCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        picture.image = R.image.alienMartian()
+        picture.image = R.image.astro()
     }
 }

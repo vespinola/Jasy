@@ -38,6 +38,20 @@ class InfoViewController: UIViewController {
             NSAttributedStringKey.paragraphStyle   : leftAlignmentStype
         ]))
         
+        if let copyright = apod.copyright {
+            titleAttributedString.append(NSMutableAttributedString(string: "\n\nCopyright: ", attributes: [
+                NSAttributedStringKey.font             : JFont.mediumBold,
+                NSAttributedStringKey.foregroundColor  : JColor.black,
+                NSAttributedStringKey.paragraphStyle   : leftAlignmentStype
+            ]))
+            
+            titleAttributedString.append(NSMutableAttributedString(string: "\(copyright)", attributes: [
+                NSAttributedStringKey.font             : JFont.medium,
+                NSAttributedStringKey.foregroundColor  : JColor.black,
+                NSAttributedStringKey.paragraphStyle   : leftAlignmentStype
+            ]))
+        }
+        
         textView.attributedText = titleAttributedString
         textView.isEditable = false
         textView.isScrollEnabled = true

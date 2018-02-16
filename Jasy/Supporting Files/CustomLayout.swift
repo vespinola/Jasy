@@ -51,7 +51,7 @@ class CustomLayout: UICollectionViewLayout {
             let indexPath = IndexPath(item: item, section: 0)
             
             let photoHeith = columnWidth
-            let height = photoHeith + 21
+            let height = photoHeith
             
             let frame = CGRect(x: xOffSet[column], y: yOffSet[column], width: columnWidth, height: height)
             
