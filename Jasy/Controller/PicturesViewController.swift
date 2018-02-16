@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PicturesViewController: CustomViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -121,6 +122,8 @@ extension PicturesViewController: UICollectionViewDelegateFlowLayout {
         
         let apodDetailViewController =  R.storyboard.main.apodDetailViewControllerID()!
         apodDetailViewController.apod = apods[indexPath.row]
+        
+        Analytics.logEvent("go_to_apod_detail", parameters: nil)
         
         self.navigationController?.pushViewController(apodDetailViewController, animated: true)
         

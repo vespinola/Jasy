@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ApodDetailViewController: CustomViewController {
     @IBOutlet weak var picture: UIImageView!
@@ -53,6 +54,7 @@ class ApodDetailViewController: CustomViewController {
     }
     
     @IBAction func infoButtonOnTap(_ sender: Any) {
+        Analytics.logEvent("show_apod_info", parameters: nil)
         InfoViewController.show(in: self, apod: apod)
     }
 }
