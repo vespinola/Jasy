@@ -29,13 +29,13 @@ class PicturesViewController: CustomViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        let nameOfMonth = dateFormatter.string(from: now)
         
-        titleLabel.text = "Take a look at \(nameOfMonth.capitalized) pictures!"
+        titleLabel.text = "Take a look at \(now.monthName!) pictures!"
+        
+        if UserDefaults.standard.string(forKey: JUserDefaultsKeys.currentMonth) == nil {
+            UserDefaults.standard.set(now.monthName!, forKey: JUserDefaultsKeys.currentMonth)
+        }
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,26 +43,32 @@ class PicturesViewController: CustomViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        if !ApodModel.apods.isEmpty {
-            apods = ApodModel.apods
-            performUIUpdatesOnMain {
-                self.collectionView.reloadData()
-            }
-        } else {
-            showActivityIndicator()
+        refreshMonthPicturesIfIsNeeded {
             
-            NasaHandler.shared().getPhotoOfTheDays(in: self) {  apods in
-                self.hideActivityIndicator()
-                
-                ApodModel.apods = apods
-                self.apods = apods
-                
+            if !ApodModel.apods.isEmpty {
+                self.apods = ApodModel.apods
                 performUIUpdatesOnMain {
                     self.collectionView.reloadData()
                 }
+            } else {
+                self.showActivityIndicator()
+                
+                NasaHandler.shared().getPhotoOfTheDays(in: self) {  apods in
+                    self.hideActivityIndicator()
+                    
+                    ApodModel.apods = apods
+                    self.apods = apods
+                    
+                    performUIUpdatesOnMain {
+                        self.collectionView.reloadData()
+                    }
+                }
             }
         }
+        
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -123,3 +129,40 @@ extension PicturesViewController: UICollectionViewDelegateFlowLayout {
         
     }
 }
+
+extension PicturesViewController {
+    //MARK: Helpers
+    
+    func refreshMonthPicturesIfIsNeeded (_ callback: @escaping () -> Void) {
+        let userDefaults = UserDefaults.standard
+        
+        let month = userDefaults.string(forKey: JUserDefaultsKeys.currentMonth)
+        let currentMonth = Date().monthName
+        
+        
+        if (month != currentMonth) {
+            userDefaults.set(currentMonth, forKey: JUserDefaultsKeys.currentMonth)
+            //todo: drop all pictures
+            callback()
+        } else {
+            // todo: get pictures with coredata.
+            callback()
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -159,6 +159,12 @@ extension Date {
         comp.day = -1
         return Calendar.current.date(byAdding: comp, to: self.startOfMonth()!)
     }
+    
+    var monthName: String! {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        return dateFormatter.string(from: self)
+    }
 }
 
 
