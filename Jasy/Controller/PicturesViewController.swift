@@ -108,7 +108,8 @@ extension PicturesViewController: UICollectionViewDataSource {
             }
         }
         
-        cell.label.text = currentApod.title
+        cell.titleLabel.text = currentApod.title
+        cell.dateLabel.text = currentApod.date
         
         return cell
     }

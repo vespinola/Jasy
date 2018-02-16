@@ -50,20 +50,30 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnE-EV-KFP">
+                                                    <rect key="frame" x="78" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="yny-pH-Abn" secondAttribute="bottom" id="0Q2-d8-Vzn"/>
+                                            <constraint firstItem="ZnE-EV-KFP" firstAttribute="top" secondItem="yny-pH-Abn" secondAttribute="top" constant="8" id="5DF-vl-DfC"/>
                                             <constraint firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" id="Bsi-4X-xVt"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="leading" secondItem="yny-pH-Abn" secondAttribute="leading" constant="16" id="GJl-nl-OSv"/>
                                             <constraint firstItem="yny-pH-Abn" firstAttribute="leading" secondItem="gmy-8P-s0e" secondAttribute="leading" id="Htt-rJ-8Ia"/>
-                                            <constraint firstAttribute="bottom" secondItem="yny-pH-Abn" secondAttribute="bottom" id="Sr0-7J-QIi"/>
+                                            <constraint firstItem="ZnE-EV-KFP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gmy-8P-s0e" secondAttribute="leading" symbolic="YES" id="NtC-WL-D5c"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" constant="-16" id="b5d-10-csV"/>
+                                            <constraint firstItem="ZnE-EV-KFP" firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" constant="-8" id="f7H-mf-Fe7"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="bottom" secondItem="yny-pH-Abn" secondAttribute="bottom" constant="-8" id="nJB-b5-Ngi"/>
                                             <constraint firstItem="yny-pH-Abn" firstAttribute="top" secondItem="gmy-8P-s0e" secondAttribute="top" id="wOe-ek-2P9"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="label" destination="nWe-pk-jwd" id="QcM-lP-e4L"/>
+                                            <outlet property="dateLabel" destination="ZnE-EV-KFP" id="v4R-7G-0fu"/>
                                             <outlet property="picture" destination="yny-pH-Abn" id="1ca-cf-JoC"/>
+                                            <outlet property="titleLabel" destination="nWe-pk-jwd" id="QcM-lP-e4L"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -90,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GdF-RC-kdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296.80000000000001" y="341.37931034482762"/>
+            <point key="canvasLocation" x="296.25" y="341.19718309859155"/>
         </scene>
         <!--Apod Detail View Controller-->
         <scene sceneID="1HT-EU-9p5">

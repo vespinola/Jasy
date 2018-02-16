@@ -10,7 +10,8 @@ import UIKit
 
 class PictureCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var picture: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     
     let itemsPerRow: CGFloat = 3
@@ -21,14 +22,22 @@ class PictureCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        [titleLabel, dateLabel].forEach {
+            $0?.lineBreakMode = .byClipping
+            $0?.numberOfLines = 0
+            $0?.textColor = JColor.white
+            $0?.textAlignment = .center
+        }
+        
+        dateLabel.font = JFont.verySmall
+        titleLabel.font = JFont.smallMedium
+
         picture.contentMode = .scaleAspectFill
         picture.image = R.image.alienMartian()
         
-        label.lineBreakMode = .byClipping
-        label.numberOfLines = 0
+        picture.layer.masksToBounds = true
+        picture.layer.cornerRadius = JMetric.cornerRadius
         
-        contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = JMetric.cornerRadius
     }
     
     override func prepareForReuse() {
