@@ -23,8 +23,18 @@ class PicturesViewController: CustomViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        collectionView.backgroundColor = Constants.Color.black
-        view.backgroundColor = Constants.Color.background
+        collectionView.backgroundColor = JColor.black
+        view.backgroundColor = JColor.background
+        
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        
+        titleLabel.text = "Take a look at \(nameOfMonth.capitalized) pictures!"
+
         
     }
     

@@ -28,7 +28,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         
         contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = Constants.Metric.cornerRadius
+        contentView.layer.cornerRadius = JMetric.cornerRadius
     }
     
     override func prepareForReuse() {

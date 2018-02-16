@@ -44,11 +44,11 @@ class CustomViewController: UIViewController {
         performUIUpdatesOnMain {
             let window = UIApplication.shared.keyWindow!
             self.cover = UIView(frame: CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height))
-            self.cover?.backgroundColor = Constants.Color.black.withAlphaComponent(0.6)
+            self.cover?.backgroundColor = JColor.black.withAlphaComponent(0.6)
             self.cover?.tag = 101
             self.view.addSubview(self.cover!)
             
-            self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballTrianglePath, color: Constants.Color.background)
+            self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballTrianglePath, color: JColor.background)
             self.activityIndicator?.center = self.view.center
             self.activityIndicator?.tag = 100
             self.view.addSubview(self.activityIndicator!)

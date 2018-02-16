@@ -27,27 +27,28 @@ class InfoViewController: UIViewController {
         centerAlignmentStype.alignment = .center
         
         titleAttributedString.append(NSMutableAttributedString(string: apod.title!, attributes: [
-            NSAttributedStringKey.font             : Constants.Font.ExtraLargeBold,
-            NSAttributedStringKey.foregroundColor  : Constants.Color.black,
+            NSAttributedStringKey.font             : JFont.extraLargeBold,
+            NSAttributedStringKey.foregroundColor  : JColor.black,
             NSAttributedStringKey.paragraphStyle   : centerAlignmentStype
         ]))
         
         titleAttributedString.append(NSMutableAttributedString(string: "\n\n\(apod.explanation!)", attributes: [
-            NSAttributedStringKey.font             : Constants.Font.Medium,
-            NSAttributedStringKey.foregroundColor  : Constants.Color.black,
+            NSAttributedStringKey.font             : JFont.medium,
+            NSAttributedStringKey.foregroundColor  : JColor.black,
             NSAttributedStringKey.paragraphStyle   : leftAlignmentStype
         ]))
         
         textView.attributedText = titleAttributedString
         textView.isEditable = false
         textView.isScrollEnabled = true
-        textView.layer.cornerRadius = Constants.Metric.cornerRadius
+        textView.layer.cornerRadius = JMetric.cornerRadius
         textView.textContainerInset = UIEdgeInsets(top: 40, left: 20, bottom: 20, right: 20)
         textView.contentOffset = CGPoint.zero
         
-        textView.backgroundColor =  Constants.Color.white.withAlphaComponent(backgroundAlpha)
-        view.backgroundColor = Constants.Color.translucent
+        textView.backgroundColor =  JColor.white.withAlphaComponent(backgroundAlpha)
+        view.backgroundColor = JColor.translucent
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissViewController)))
+        
     }
     
     @objc func dismissViewController() {
