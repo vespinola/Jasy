@@ -38,7 +38,7 @@ class PicturesViewController: CustomViewController {
         }
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
-        fr.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.stack!.context, sectionNameKeyPath: nil, cacheName: nil)
         
