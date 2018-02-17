@@ -8,12 +8,13 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class PicturesViewController: CustomViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var apods: [ApodModel] = []
+    var apods: [Apod] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +31,22 @@ class PicturesViewController: CustomViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         let now = Date()
-        
         titleLabel.text = "Take a look at \(now.monthName!) pictures!"
         
         if UserDefaults.standard.string(forKey: JUserDefaultsKeys.currentMonth) == nil {
             UserDefaults.standard.set(now.monthName!, forKey: JUserDefaultsKeys.currentMonth)
+        }
+        
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
+        fr.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.stack!.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        
+        if let apods = fetchedResultsController?.fetchedObjects as? [Apod] {
+        
+            apods.isEmpty ? getPhotosOfTheDay() : (self.apods = apods)
+            
         }
 
     }
@@ -45,31 +57,39 @@ class PicturesViewController: CustomViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
         refreshMonthPicturesIfIsNeeded {
-            
-            if !ApodModel.apods.isEmpty {
-                self.apods = ApodModel.apods
+            if !self.apods.isEmpty {
                 performUIUpdatesOnMain {
                     self.collectionView.reloadData()
                 }
             } else {
-                self.showActivityIndicator()
-                
-                NasaHandler.shared().getPhotoOfTheDays(in: self) {  apods in
-                    self.hideActivityIndicator()
-                    
-                    ApodModel.apods = apods
-                    self.apods = apods
-                    
-                    performUIUpdatesOnMain {
-                        self.collectionView.reloadData()
-                    }
-                }
+                self.getPhotosOfTheDay()
             }
         }
         
     }
     
-    
+    func getPhotosOfTheDay() {
+        showActivityIndicator()
+        
+        NasaHandler.shared().getPhotoOfTheDays(in: self) {  apodsModel in
+            self.hideActivityIndicator()
+            
+//            apodsModel.forEach { apodModel in
+//                let _ = Apod(apod: apodModel, context: AppDelegate.stack!.context)
+//            }
+            
+            self.apods = apodsModel.map { apodModel in
+                let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
+                return apod
+            }
+            
+//            AppDelegate.stack?.save()
+            
+            performUIUpdatesOnMain {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -86,14 +106,14 @@ class PicturesViewController: CustomViewController {
 
 extension PicturesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return fetchedResultsController?.sections?.first?.numberOfObjects ?? 0
-        return apods.count
+        return fetchedResultsController?.sections?.first?.numberOfObjects ?? 0
+//        return apods.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.pictureCellID.identifier, for: indexPath) as! PictureCollectionViewCell
         
-        var currentApod = apods[indexPath.row]
+        let currentApod = apods[indexPath.row]
         
         
         if let image = currentApod.image {
@@ -101,7 +121,7 @@ extension PicturesViewController: UICollectionViewDataSource {
         } else if let link = currentApod.url {
 
             Util.downloadImageFrom(link: link) { image in
-                currentApod.image = image
+                currentApod.image = image as NSData
 
                 performUIUpdatesOnMain {
                     cell.picture.image = UIImage(data: image)
@@ -144,15 +164,17 @@ extension PicturesViewController {
         let currentMonth = Date().monthName
         
         
-        if (month != currentMonth) {
+        if month != currentMonth {
             userDefaults.set(currentMonth, forKey: JUserDefaultsKeys.currentMonth)
             //todo: drop all pictures
-            callback()
-        } else {
-            // todo: get pictures with coredata.
+            for photo in fetchedResultsController?.fetchedObjects as! [Apod] {
+                AppDelegate.stack?.context.delete(photo)
+            }
+            
+            AppDelegate.stack?.save()
+
             callback()
         }
-        
     }
 }
 

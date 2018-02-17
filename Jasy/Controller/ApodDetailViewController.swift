@@ -15,7 +15,7 @@ class ApodDetailViewController: CustomViewController {
     @IBOutlet weak var infoButton: UIButton!
     
     var hdurl: String!
-    var apod: ApodModel!
+    var apod: Apod!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +35,17 @@ class ApodDetailViewController: CustomViewController {
         infoButton.setImage(tintedImage, for: .normal)
         infoButton.tintColor = .white
         
-        if let hdimage = apod.hdImage {
+        if let hdimage = apod.hdimage {
             performUIUpdatesOnMain {
-                self.picture.image = UIImage(data: hdimage)
+                self.picture.image = UIImage(data: hdimage as Data)
             }
         } else {
             showActivityIndicator()
             
-            Util.downloadImageFrom(link: apod.hdurl) { image in
+            Util.downloadImageFrom(link: apod.hdurl!) { image in
                 self.hideActivityIndicator()
                 performUIUpdatesOnMain {
-                    self.apod.hdImage = image
+                    self.apod.hdimage = image as NSData
                     self.picture.image = UIImage(data: image)
                 }
             }

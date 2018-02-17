@@ -63,7 +63,7 @@ struct CoreDataStack {
             return nil
         }
         
-        self.dbURL = docUrl.appendingPathComponent("VirtualTourist.sqlite")
+        self.dbURL = docUrl.appendingPathComponent("Jasy.sqlite")
         
         // Options for migration
         let options = [NSInferMappingModelAutomaticallyOption: true,NSMigratePersistentStoresAutomaticallyOption: true]

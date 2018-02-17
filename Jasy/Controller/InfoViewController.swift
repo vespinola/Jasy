@@ -13,7 +13,7 @@ class InfoViewController: UIViewController {
     
     
     let backgroundAlpha: CGFloat = 0.6
-    var apod: ApodModel!
+    var apod: Apod!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class InfoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    class func show(in viewController: UIViewController, apod: ApodModel, callback: (() -> Void)? = nil) {
+    class func show(in viewController: UIViewController, apod: Apod, callback: (() -> Void)? = nil) {
         let apodDetailViewController = R.storyboard.main.infoViewControllerID()!
         
         apodDetailViewController.apod = apod
