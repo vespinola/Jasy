@@ -56,15 +56,15 @@ class PicturesViewController: CustomViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        refreshMonthPicturesIfIsNeeded {
-            if !self.apods.isEmpty {
-                performUIUpdatesOnMain {
-                    self.collectionView.reloadData()
-                }
-            } else {
-                self.getPhotosOfTheDay()
-            }
-        }
+//        refreshMonthPicturesIfIsNeeded {
+//            if !self.apods.isEmpty {
+//                performUIUpdatesOnMain {
+//                    self.collectionView.reloadData()
+//                }
+//            } else {
+//                self.getPhotosOfTheDay()
+//            }
+//        }
         
     }
     
@@ -74,16 +74,12 @@ class PicturesViewController: CustomViewController {
         NasaHandler.shared().getPhotoOfTheDays(in: self) {  apodsModel in
             self.hideActivityIndicator()
             
-//            apodsModel.forEach { apodModel in
-//                let _ = Apod(apod: apodModel, context: AppDelegate.stack!.context)
-//            }
-            
             self.apods = apodsModel.map { apodModel in
                 let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
                 return apod
             }
             
-//            AppDelegate.stack?.save()
+            AppDelegate.stack?.save()
             
             performUIUpdatesOnMain {
                 self.collectionView.reloadData()
@@ -107,7 +103,6 @@ class PicturesViewController: CustomViewController {
 extension PicturesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedResultsController?.sections?.first?.numberOfObjects ?? 0
-//        return apods.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -126,6 +121,8 @@ extension PicturesViewController: UICollectionViewDataSource {
                 performUIUpdatesOnMain {
                     cell.picture.image = UIImage(data: image)
                 }
+                
+                AppDelegate.stack?.save()
             }
         }
         
@@ -176,6 +173,8 @@ extension PicturesViewController {
             callback()
         }
     }
+    
+    
 }
 
 

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
-        AppDelegate.stack?.autoSave(30)
+//        AppDelegate.stack?.autoSave(60)
         return true
     }
 

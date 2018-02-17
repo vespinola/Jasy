@@ -44,10 +44,11 @@ class ApodDetailViewController: CustomViewController {
             
             Util.downloadImageFrom(link: apod.hdurl!) { image in
                 self.hideActivityIndicator()
+                self.apod.hdimage = image as NSData
                 performUIUpdatesOnMain {
-                    self.apod.hdimage = image as NSData
                     self.picture.image = UIImage(data: image)
                 }
+                AppDelegate.stack?.save()
             }
         }
     

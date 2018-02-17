@@ -4,9 +4,9 @@
         <attribute name="copyright" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" attributeType="String" syncable="YES"/>
         <attribute name="explanation" attributeType="String" syncable="YES"/>
-        <attribute name="hdimage" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="hdimage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="hdurl" attributeType="String" syncable="YES"/>
-        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="mediaType" attributeType="String" syncable="YES"/>
         <attribute name="serviceVersion" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
