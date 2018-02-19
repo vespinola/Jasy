@@ -8,11 +8,14 @@
 
 import UIKit
 import Firebase
+import WebKit
 
 class ApodDetailViewController: CustomViewController {
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var infoButton: UIButton!
+    var webView: WKWebView!
+    
     
     var hdurl: String!
     var apod: Apod!
@@ -23,10 +26,10 @@ class ApodDetailViewController: CustomViewController {
         title = apod.title
         
         picture.contentMode = .scaleAspectFit
-        picture.backgroundColor = UIColor.black
+        picture.backgroundColor = JColor.black
         
         scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 5.0
+        scrollView.maximumZoomScale = 7.0
         scrollView.delegate = self
         scrollView.backgroundColor = UIColor.black
         
@@ -39,10 +42,10 @@ class ApodDetailViewController: CustomViewController {
             performUIUpdatesOnMain {
                 self.picture.image = UIImage(data: hdimage as Data)
             }
-        } else {
+        } else if let hdurl = apod.hdurl {
             showActivityIndicator()
             
-            Util.downloadImageFrom(link: apod.hdurl!) { image in
+            Util.downloadImageFrom(link: hdurl) { image in
                 self.hideActivityIndicator()
                 self.apod.hdimage = image as NSData
                 performUIUpdatesOnMain {
@@ -50,6 +53,16 @@ class ApodDetailViewController: CustomViewController {
                 }
                 AppDelegate.stack?.save()
             }
+        } else {
+            let webViewConfiguration = WKWebViewConfiguration()
+            webViewConfiguration.allowsInlineMediaPlayback = true
+            webView = WKWebView(frame: self.view.frame, configuration: webViewConfiguration)
+            webView.backgroundColor = JColor.black
+            webView.uiDelegate = self
+            view.addSubview(webView)
+            let myURL = URL(string: apod.url!)
+            let youtubeRequest = URLRequest(url: myURL!)
+            webView.load(youtubeRequest)
         }
     
     }
@@ -65,3 +78,16 @@ extension ApodDetailViewController: UIScrollViewDelegate {
         return picture
     }
 }
+
+extension ApodDetailViewController: WKUIDelegate {
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        showActivityIndicator()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        hideActivityIndicator()
+    }
+}
+
+
+

@@ -14,7 +14,7 @@ struct ApodModel {
     
     var date: String!
     var explanation: String!
-    var hdurl: String!
+    var hdurl: String?
     var mediaType: String!
     var serviceVersion: String!
     var title: String!
@@ -27,7 +27,7 @@ struct ApodModel {
     init(with dictionary :JDictionary) {
         date = dictionary["date"] as! String
         explanation = dictionary["explanation"] as! String
-        hdurl = dictionary["hdurl"] as! String
+        hdurl = dictionary["hdurl"] as? String
         mediaType = dictionary["media_type"] as! String
         serviceVersion = dictionary["service_version"] as! String
         title = dictionary["title"] as! String
