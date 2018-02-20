@@ -67,6 +67,12 @@ class ApodDetailViewController: CustomViewController {
     
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard webView != nil else { return }
+        webView.frame = view.frame
+    }
+    
     @IBAction func infoButtonOnTap(_ sender: Any) {
         Analytics.logEvent("show_apod_info", parameters: nil)
         InfoViewController.show(in: self, apod: apod)
