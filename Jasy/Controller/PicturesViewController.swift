@@ -113,17 +113,23 @@ extension PicturesViewController: UICollectionViewDataSource {
         
         if let image = currentApod.image {
             cell.picture.image = UIImage(data: image as Data)
-        } else if let link = currentApod.url {
-
+        } else if var link = currentApod.url, let type = currentApod.mediaType {
+            
+            if type == "video" {
+                link = Util.getYoutubeVideoThumbnail(for: link)
+                print("LINK: " + link)
+            }
+            
             Util.downloadImageFrom(link: link) { image in
                 currentApod.image = image as NSData
-
+                
                 performUIUpdatesOnMain {
                     cell.picture.image = UIImage(data: image)
                 }
                 
                 AppDelegate.stack?.save()
             }
+            
         }
         
         cell.titleLabel.text = currentApod.title

@@ -85,21 +85,20 @@ class Util {
             
         }.resume()
     }
-    
-    //from https://stackoverflow.com/a/41811798
-    class func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
-        
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.orientationLock = orientation
+   
+    //from https://stackoverflow.com/a/44039304
+    class func getYoutubeVideoThumbnail(for link: String) -> String {
+        let regexString: String = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/))([\\w-]++)"
+        let regExp = try? NSRegularExpression(pattern: regexString, options: .caseInsensitive)
+        let array: [Any] = (regExp?.matches(in: link, options: [], range: NSRange(location: 0, length: (link.count ))))!
+        if array.count > 0 {
+            let result: NSTextCheckingResult? = array.first as? NSTextCheckingResult
+            let id = (link as NSString).substring(with: (result?.range)!)
+            
+            return "https://i.ytimg.com/vi/\(id)/maxresdefault.jpg"
         }
-    }
-    
-    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
-    class func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
         
-        self.lockOrientation(orientation)
-        
-        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        return ""
     }
 }
 

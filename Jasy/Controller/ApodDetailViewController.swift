@@ -58,7 +58,7 @@ class ApodDetailViewController: CustomViewController {
             webViewConfiguration.allowsInlineMediaPlayback = true
             webView = WKWebView(frame: self.view.frame, configuration: webViewConfiguration)
             webView.backgroundColor = JColor.black
-            webView.uiDelegate = self
+            webView.navigationDelegate = self
             view.addSubview(webView)
             let myURL = URL(string: apod.url!)
             let youtubeRequest = URLRequest(url: myURL!)
@@ -85,13 +85,13 @@ extension ApodDetailViewController: UIScrollViewDelegate {
     }
 }
 
-extension ApodDetailViewController: WKUIDelegate {
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        showActivityIndicator()
+extension ApodDetailViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        hideActivityIndicator()
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        hideActivityIndicator()
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        showActivityIndicator()
     }
 }
 
