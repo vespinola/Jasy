@@ -19,13 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a look at February pictures!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pih-ej-AXG">
-                                <rect key="frame" x="20" y="94" width="280" height="21"/>
+                                <rect key="frame" x="20" y="72" width="280" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cyO-N5-chp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ay8-gX-BpW">
-                                <rect key="frame" x="0.0" y="145" width="320" height="423"/>
+                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LKN-8r-QAD" customClass="CustomLayout" customModule="Jasy" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="126"/>
@@ -82,13 +85,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ay8-gX-BpW" firstAttribute="top" secondItem="pih-ej-AXG" secondAttribute="bottom" constant="30" id="FaF-Ak-S8U"/>
+                            <constraint firstItem="ay8-gX-BpW" firstAttribute="top" secondItem="pih-ej-AXG" secondAttribute="bottom" constant="8" id="FaF-Ak-S8U"/>
                             <constraint firstItem="bAG-8R-0cM" firstAttribute="bottom" secondItem="ay8-gX-BpW" secondAttribute="bottom" id="IR9-Fu-0dt"/>
                             <constraint firstItem="ay8-gX-BpW" firstAttribute="leading" secondItem="bAG-8R-0cM" secondAttribute="leading" id="JJQ-G2-Jc6"/>
                             <constraint firstItem="bAG-8R-0cM" firstAttribute="trailing" secondItem="ay8-gX-BpW" secondAttribute="trailing" id="XEt-l4-54M"/>
                             <constraint firstItem="bAG-8R-0cM" firstAttribute="trailing" secondItem="pih-ej-AXG" secondAttribute="trailing" constant="20" id="iWg-kS-uRY"/>
                             <constraint firstItem="pih-ej-AXG" firstAttribute="leading" secondItem="bAG-8R-0cM" secondAttribute="leading" constant="20" id="sCz-iL-22b"/>
-                            <constraint firstItem="pih-ej-AXG" firstAttribute="top" secondItem="bAG-8R-0cM" secondAttribute="top" constant="30" id="sOK-Ca-4eM"/>
+                            <constraint firstItem="pih-ej-AXG" firstAttribute="top" secondItem="bAG-8R-0cM" secondAttribute="top" constant="8" id="sOK-Ca-4eM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bAG-8R-0cM"/>
                     </view>
