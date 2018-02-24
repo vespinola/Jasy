@@ -127,33 +127,17 @@
                                     <constraint firstItem="5Ux-te-GOt" firstAttribute="centerY" secondItem="pk5-1y-ICy" secondAttribute="centerY" id="z3r-NR-Jt9"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9og-PT-gPt">
-                                <rect key="frame" x="275" y="523" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="NJD-0f-oIv"/>
-                                    <constraint firstAttribute="width" constant="25" id="TYg-nM-f1g"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="ic_info_outline"/>
-                                <connections>
-                                    <action selector="infoButtonOnTap:" destination="eWi-yF-uUa" eventType="touchUpInside" id="odH-d9-byS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pk5-1y-ICy" firstAttribute="top" secondItem="dB5-1K-4O4" secondAttribute="top" id="9SS-Bt-qNn"/>
                             <constraint firstAttribute="trailing" secondItem="pk5-1y-ICy" secondAttribute="trailing" id="C9t-tj-MVK"/>
-                            <constraint firstItem="dB5-1K-4O4" firstAttribute="bottom" secondItem="9og-PT-gPt" secondAttribute="bottom" constant="20" id="Cwp-eW-lls"/>
                             <constraint firstItem="pk5-1y-ICy" firstAttribute="bottom" secondItem="dB5-1K-4O4" secondAttribute="bottom" id="LOB-sp-FHl"/>
                             <constraint firstItem="pk5-1y-ICy" firstAttribute="leading" secondItem="FRU-jl-2xc" secondAttribute="leading" id="gJS-v2-0HQ"/>
-                            <constraint firstItem="dB5-1K-4O4" firstAttribute="trailing" secondItem="9og-PT-gPt" secondAttribute="trailing" constant="20" id="osg-nW-WyX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dB5-1K-4O4"/>
                     </view>
                     <connections>
-                        <outlet property="infoButton" destination="9og-PT-gPt" id="DXH-ex-mfB"/>
                         <outlet property="picture" destination="5Ux-te-GOt" id="Vsj-jk-Btq"/>
                         <outlet property="scrollView" destination="pk5-1y-ICy" id="h1d-YC-poO"/>
                     </connections>
@@ -215,7 +199,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_info_outline" width="24" height="24"/>
         <image name="ic_search_white" width="24" height="24"/>
     </resources>
 </document>

@@ -30,6 +30,7 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - Firebase (~> 4.8)
   - NVActivityIndicatorView
   - R.swift (~> 4.0)
+  - SnapKit (~> 4.0)
 
 SPEC CHECKSUMS:
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
@@ -50,7 +52,8 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 8458c2c42ec81e784af5752cc7bdaf482000d18b
+PODFILE CHECKSUM: 4ca82d72b0657763d9b5b8acc0368b97ceef61b1
 
 COCOAPODS: 1.4.0

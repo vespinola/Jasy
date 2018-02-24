@@ -9,12 +9,16 @@
 import UIKit
 import Firebase
 import WebKit
+import SnapKit
 
 class ApodDetailViewController: CustomViewController {
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var infoButton: UIButton!
     var webView: WKWebView!
+    
+    var shouldUpdateConstraints = true
+    
+    var explanationButton: UIButton!
     
     
     var hdurl: String!
@@ -32,11 +36,6 @@ class ApodDetailViewController: CustomViewController {
         scrollView.maximumZoomScale = 7.0
         scrollView.delegate = self
         scrollView.backgroundColor = UIColor.black
-        
-        let origImage = R.image.ic_info_outline()
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        infoButton.setImage(tintedImage, for: .normal)
-        infoButton.tintColor = .white
         
         if let hdimage = apod.hdimage {
             performUIUpdatesOnMain {
@@ -65,6 +64,9 @@ class ApodDetailViewController: CustomViewController {
             webView.load(youtubeRequest)
         }
         
+        explanationButton = UIButton(type: .infoLight)
+        explanationButton.tintColor = .white
+        view.addSubview(explanationButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,9 +75,27 @@ class ApodDetailViewController: CustomViewController {
         webView.frame = view.frame
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        explanationButton.addTarget(self, action: #selector(infoButtonOnTap(_:)), for: .touchUpInside)
+    }
+    
     @IBAction func infoButtonOnTap(_ sender: Any) {
         Analytics.logEvent("show_apod_info", parameters: nil)
         InfoViewController.show(in: self, apod: apod)
+    }
+    
+    override func updateViewConstraints() {
+        if shouldUpdateConstraints {
+            shouldUpdateConstraints = false
+            
+            explanationButton.snp.makeConstraints {
+                $0.size.equalTo(CGSize(width: 30, height: 30))
+                $0.bottom.right.equalToSuperview().offset(-16)
+            }
+        }
+        
+        super.updateViewConstraints()
     }
 }
 

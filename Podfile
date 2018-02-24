@@ -11,4 +11,5 @@ target 'Jasy' do
   pod 'Crashlytics'
   pod 'R.swift', '~> 4.0'
   pod 'NVActivityIndicatorView'
+  pod 'SnapKit', '~> 4.0'
 end
