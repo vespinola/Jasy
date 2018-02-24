@@ -121,7 +121,7 @@ extension PicturesViewController: UICollectionViewDataSource {
                 link = Util.getYoutubeVideoThumbnail(for: link)
             }
             
-            Util.downloadImageFrom(link: link) { image in
+            Util.downloadImageFrom(link: link, in: self) { image in
                 currentApod.image = image as NSData
                 
                 performUIUpdatesOnMain {

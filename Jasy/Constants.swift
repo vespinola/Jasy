@@ -91,3 +91,7 @@ struct JColor {
 struct JUserDefaultsKeys {
     static let currentMonth = "current_month"
 }
+
+struct JConfig {
+    static let timeoutInterval = 20.0
+}

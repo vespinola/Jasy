@@ -17,6 +17,7 @@ class NasaHandler: NSObject {
         
         let request = NSMutableURLRequest(url: URLFromParameters(parameters))
         request.httpMethod = verb.method()
+        request.timeoutInterval = JConfig.timeoutInterval
         
         
         if let jsonBody = jsonBody {
