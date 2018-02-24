@@ -64,7 +64,7 @@ class ApodDetailViewController: CustomViewController {
             let youtubeRequest = URLRequest(url: myURL!)
             webView.load(youtubeRequest)
         }
-    
+        
     }
     
     override func viewDidLayoutSubviews() {

@@ -9,24 +9,30 @@
 import UIKit
 
 extension NasaHandler {
-    func getPhotoOfTheDays(in viewController: UIViewController, onCompletion: (([ApodModel]) -> Void)? = nil) {
+    func getPhotoOfTheDays(in viewController: CustomViewController, onCompletion: (([ApodModel]) -> Void)? = nil) {
         let date = Date()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        
-        let firstDate = dateFormatter.string(from: date.startOfMonth()!)
-        let currentDate = dateFormatter.string(from: date)
+        let firstDate = date.startOfMonth()!.formattedDate
+        let currentDate = date.formattedDate
         
         let parameters: JDictionary = [
             "start_date" : firstDate,
             "end_date" : currentDate
         ]
         
+        viewController.showActivityIndicator()
+        
         NasaHandler.shared().request(verb: .get, parameters: parameters) { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
-                print("nope")
+                Util.showAlert(for: error?.localizedDescription ?? "Empty Description", in: viewController)
+                return
+            }
+            
+            guard let data = data else {
+                Util.showAlert(for: "No data returned from server.", in: viewController)
                 return
             }
             
@@ -37,6 +43,32 @@ extension NasaHandler {
             onCompletion?(apods)
             
         }
+    }
+    
+    func getPhotoOfTheDay(in viewController: CustomViewController, onCompletion: ((ApodModel) -> Void)? = nil) {
         
+        viewController.showActivityIndicator()
+        
+        NasaHandler.shared().request(verb: .get) { data, error in
+            
+            viewController.hideActivityIndicator()
+            
+            guard error == nil else {
+                Util.showAlert(for: error?.localizedDescription ?? "Empty Description", in: viewController)
+                return
+            }
+            
+            guard let data = data else {
+                Util.showAlert(for: "No data returned from server.", in: viewController)
+                return
+            }
+            
+            let dictionary = data as! JDictionary
+            
+            let apod = ApodModel(with: dictionary)
+            
+            onCompletion?(apod)
+            
+        }
     }
 }

@@ -37,15 +37,20 @@ class PicturesViewController: CustomViewController {
             UserDefaults.standard.set(now.monthName!, forKey: JUserDefaultsKeys.currentMonth)
         }
         
+        refreshMonthPicturesIfIsNeeded()
+        
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.stack!.context, sectionNameKeyPath: nil, cacheName: nil)
         
-        
         if let apods = fetchedResultsController?.fetchedObjects as? [Apod] {
-        
-            apods.isEmpty ? getPhotosOfTheDay() : (self.apods = apods)
+            
+            if apods.isEmpty {
+                getPhotosOfTheDay()
+            } else {
+                self.apods = apods
+            }
             
         }
 
@@ -56,24 +61,22 @@ class PicturesViewController: CustomViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
-//        refreshMonthPicturesIfIsNeeded {
-//            if !self.apods.isEmpty {
-//                performUIUpdatesOnMain {
-//                    self.collectionView.reloadData()
-//                }
-//            } else {
-//                self.getPhotosOfTheDay()
-//            }
-//        }
+        let now = Date()
+        
+        if let lastApod = apods.last, lastApod.date! < now.formattedDate  {
+            NasaHandler.shared().getPhotoOfTheDay(in: self) { apodModel in
+                let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
+                self.apods.append(apod)
+                self.collectionView.reloadData()
+                
+                AppDelegate.stack?.save()
+            }
+        }
         
     }
     
     func getPhotosOfTheDay() {
-        showActivityIndicator()
-        
         NasaHandler.shared().getPhotoOfTheDays(in: self) {  apodsModel in
-            self.hideActivityIndicator()
-            
             self.apods = apodsModel.map { apodModel in
                 let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
                 return apod
@@ -110,14 +113,12 @@ extension PicturesViewController: UICollectionViewDataSource {
         
         let currentApod = apods[indexPath.row]
         
-        
         if let image = currentApod.image {
             cell.picture.image = UIImage(data: image as Data)
         } else if var link = currentApod.url, let type = currentApod.mediaType {
             
             if type == "video" {
                 link = Util.getYoutubeVideoThumbnail(for: link)
-                print("LINK: " + link)
             }
             
             Util.downloadImageFrom(link: link) { image in
@@ -151,16 +152,12 @@ extension PicturesViewController: UICollectionViewDelegateFlowLayout {
         self.navigationController?.pushViewController(apodDetailViewController, animated: true)
         
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
-    }
 }
 
 extension PicturesViewController {
     //MARK: Helpers
     
-    func refreshMonthPicturesIfIsNeeded (_ callback: @escaping () -> Void) {
+    func refreshMonthPicturesIfIsNeeded () {
         let userDefaults = UserDefaults.standard
         
         let month = userDefaults.string(forKey: JUserDefaultsKeys.currentMonth)
@@ -175,25 +172,6 @@ extension PicturesViewController {
             }
             
             AppDelegate.stack?.save()
-
-            callback()
         }
     }
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
