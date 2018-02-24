@@ -73,7 +73,6 @@ class InfoViewController: UIViewController {
         let apodDetailViewController = R.storyboard.main.infoViewControllerID()!
         
         apodDetailViewController.apod = apod
-        
         apodDetailViewController.providesPresentationContextTransitionStyle = true
         apodDetailViewController.definesPresentationContext = true
         apodDetailViewController.modalPresentationStyle = .overFullScreen
