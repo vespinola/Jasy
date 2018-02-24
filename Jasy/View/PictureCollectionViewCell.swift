@@ -29,6 +29,8 @@ class PictureCollectionViewCell: UICollectionViewCell {
             $0?.textAlignment = .center
         }
         
+        titleLabel.adjustsFontSizeToFitWidth = true
+        
         dateLabel.font = JFont.verySmall
         titleLabel.font = JFont.smallMedium
 
