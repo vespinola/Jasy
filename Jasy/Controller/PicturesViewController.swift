@@ -67,8 +67,10 @@ class PicturesViewController: CustomViewController {
             NasaHandler.shared().getPhotoOfTheDay(in: self) { apodModel in
                 let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
                 self.apods.append(apod)
-                self.collectionView.reloadData()
-                
+                performUIUpdatesOnMain {
+                    self.collectionView.reloadData()
+                }
+        
                 AppDelegate.stack?.save()
             }
         }

@@ -59,20 +59,23 @@ class NasaHandler: NSObject {
     
     private func URLFromParameters(_ parameters: JDictionary?) -> URL {
         
+        var params = parameters
+        
         var components = URLComponents()
         components.scheme = NasaHandler.Constants.ApiScheme
         components.host = NasaHandler.Constants.ApiHost
         components.path = NasaHandler.Constants.ApiPath
         components.queryItems = [URLQueryItem]()
         
-        if var parameters = parameters {
-            
-            parameters["api_key"] = NasaHandler.Constants.ApiKey
-            
-            for (key, value) in parameters {
-                let queryItem = URLQueryItem(name: key, value: "\(value)")
-                components.queryItems!.append(queryItem)
-            }
+        if var params = params {
+            params["api_key"] = NasaHandler.Constants.ApiKey
+        } else {
+            params = ["api_key":Constants.ApiKey]
+        }
+        
+        for (key, value) in params! {
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
         }
         
         return components.url!
