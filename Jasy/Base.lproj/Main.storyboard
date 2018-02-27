@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pictures View Controller-->
+        <!--February Apods-->
         <scene sceneID="PTs-RZ-o9o">
             <objects>
                 <viewController id="ymU-XV-df8" customClass="PicturesViewController" customModule="Jasy" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,17 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a look at February pictures!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pih-ej-AXG">
-                                <rect key="frame" x="20" y="72" width="280" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="cyO-N5-chp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ay8-gX-BpW">
-                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LKN-8r-QAD" customClass="CustomLayout" customModule="Jasy" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="126"/>
@@ -85,20 +76,23 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ay8-gX-BpW" firstAttribute="top" secondItem="pih-ej-AXG" secondAttribute="bottom" constant="8" id="FaF-Ak-S8U"/>
+                            <constraint firstItem="ay8-gX-BpW" firstAttribute="top" secondItem="bAG-8R-0cM" secondAttribute="top" id="9ZJ-WM-KXd"/>
                             <constraint firstItem="bAG-8R-0cM" firstAttribute="bottom" secondItem="ay8-gX-BpW" secondAttribute="bottom" id="IR9-Fu-0dt"/>
                             <constraint firstItem="ay8-gX-BpW" firstAttribute="leading" secondItem="bAG-8R-0cM" secondAttribute="leading" id="JJQ-G2-Jc6"/>
                             <constraint firstItem="bAG-8R-0cM" firstAttribute="trailing" secondItem="ay8-gX-BpW" secondAttribute="trailing" id="XEt-l4-54M"/>
-                            <constraint firstItem="bAG-8R-0cM" firstAttribute="trailing" secondItem="pih-ej-AXG" secondAttribute="trailing" constant="20" id="iWg-kS-uRY"/>
-                            <constraint firstItem="pih-ej-AXG" firstAttribute="leading" secondItem="bAG-8R-0cM" secondAttribute="leading" constant="20" id="sCz-iL-22b"/>
-                            <constraint firstItem="pih-ej-AXG" firstAttribute="top" secondItem="bAG-8R-0cM" secondAttribute="top" constant="8" id="sOK-Ca-4eM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bAG-8R-0cM"/>
                     </view>
-                    <navigationItem key="navigationItem" id="U7i-hC-3eK"/>
+                    <navigationItem key="navigationItem" title="February Apods" id="U7i-hC-3eK">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="xcd-hp-Afq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshButtonOnTap:" destination="ymU-XV-df8" id="gMc-fy-DFt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ay8-gX-BpW" id="a6C-za-Vzg"/>
-                        <outlet property="titleLabel" destination="pih-ej-AXG" id="SyF-a4-hyp"/>
                         <segue destination="eWi-yF-uUa" kind="show" id="e0n-jb-Mbv"/>
                     </connections>
                 </viewController>
@@ -191,6 +185,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lsV-BM-z8w">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.22352941176470587" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

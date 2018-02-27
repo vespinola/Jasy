@@ -11,16 +11,13 @@ import Firebase
 import CoreData
 
 class PicturesViewController: CustomViewController {
-    @IBOutlet weak var titleLabel: UILabel!
+//    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var apods: [Apod] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -31,8 +28,8 @@ class PicturesViewController: CustomViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         let now = Date()
-        titleLabel.text = "Take a look at \(now.monthName!) pictures!"
-        
+        title = "\(now.monthName!) Apods"
+
         if UserDefaults.standard.string(forKey: JUserDefaultsKeys.currentMonth) == nil {
             UserDefaults.standard.set(now.monthName!, forKey: JUserDefaultsKeys.currentMonth)
         }
@@ -53,28 +50,10 @@ class PicturesViewController: CustomViewController {
             }
             
         }
+        
+        let textAttributes = [NSAttributedStringKey.foregroundColor:JColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        let now = Date()
-        
-        if let lastApod = apods.last, lastApod.date! < now.formattedDate  {
-            NasaHandler.shared().getPhotoOfTheDay(in: self) { apodModel in
-                let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
-                self.apods.append(apod)
-                performUIUpdatesOnMain {
-                    self.collectionView.reloadData()
-                }
-        
-                AppDelegate.stack?.save()
-            }
-        }
-        
     }
     
     func getPhotosOfTheDay() {
@@ -92,16 +71,21 @@ class PicturesViewController: CustomViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     override func viewDidLayoutSubviews() {
         collectionView.collectionViewLayout.invalidateLayout()
         super.viewDidLayoutSubviews()
     }
-
+    
+    @IBAction func refreshButtonOnTap(_ sender: Any) {
+        if let photos = fetchedResultsController?.fetchedObjects as? [Apod] {
+            for photo in photos {
+                AppDelegate.stack?.context.delete(photo)
+            }
+        }
+        
+        getPhotosOfTheDay()
+    }
+    
 }
 
 
@@ -169,8 +153,11 @@ extension PicturesViewController {
         if month != currentMonth {
             userDefaults.set(currentMonth, forKey: JUserDefaultsKeys.currentMonth)
             //todo: drop all pictures
-            for photo in fetchedResultsController?.fetchedObjects as! [Apod] {
-                AppDelegate.stack?.context.delete(photo)
+            
+            if let photos = fetchedResultsController?.fetchedObjects as? [Apod] {
+                for photo in photos {
+                    AppDelegate.stack?.context.delete(photo)
+                }
             }
             
             AppDelegate.stack?.save()
