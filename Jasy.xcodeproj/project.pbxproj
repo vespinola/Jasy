@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		537A7DA71A4D8C46D70C412C /* Pods_Jasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AAB26EB8D1DC345DB33ED8 /* Pods_Jasy.framework */; };
+		CE17C325204A06FE00CDA9CD /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17C324204A06FE00CDA9CD /* MonthYearPickerView.swift */; };
 		CE6A8F5D203248C9007827A0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A8F5C203248C9007827A0 /* InfoViewController.swift */; };
 		E703788F202D31FE00052916 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */; };
 		E7037891202D382D00052916 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7037890202D382D00052916 /* PicturesViewController.swift */; };
@@ -35,6 +36,7 @@
 		58D089795A27074701D7D45B /* Pods-Jasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasy/Pods-Jasy.release.xcconfig"; sourceTree = "<group>"; };
 		7308C59CB360F361884B84EE /* Pods-Jasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasy/Pods-Jasy.debug.xcconfig"; sourceTree = "<group>"; };
 		A6AAB26EB8D1DC345DB33ED8 /* Pods_Jasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE17C324204A06FE00CDA9CD /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		CE6A8F5C203248C9007827A0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E703788E202D31FE00052916 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7037890202D382D00052916 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				E7037892202D397C00052916 /* CustomLayout.swift */,
 				E7D1B8EC203138ED00ADBB0C /* CustomViewController.swift */,
 				E76ED130202A8C36000B65D9 /* Util.swift */,
+				CE17C324204A06FE00CDA9CD /* MonthYearPickerView.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				E709DDD6202931B200760D87 /* AppDelegate.swift in Sources */,
 				E7DDC0442030C31A00E378C2 /* Apod+CoreDataProperties.swift in Sources */,
 				E76ED12F202A8B2A000B65D9 /* Constants.swift in Sources */,
+				CE17C325204A06FE00CDA9CD /* MonthYearPickerView.swift in Sources */,
 				E7938F75202F56EF00479224 /* ApodModel.swift in Sources */,
 				E7D1B8ED203138ED00ADBB0C /* CustomViewController.swift in Sources */,
 				E7037891202D382D00052916 /* PicturesViewController.swift in Sources */,

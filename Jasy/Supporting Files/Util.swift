@@ -139,72 +139,23 @@ extension UIColor {
     }
 }
 
-//from: https://stackoverflow.com/a/27712427
-extension UIImageView {
-//    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit, callback: ((UIImage) -> Void)? = nil) {
-//        contentMode = mode
-//
-//        let session = URLSession.shared
-//
-//        let request = NSMutableURLRequest(url: url)
-//        request.timeoutInterval = JConfig.timeoutInterval
-//
-//
-//        session.dataTask(with: request as URLRequest) { data, response, error in
-//
-//            func sendError(_ error: String) {
-//                let userInfo = [NSLocalizedDescriptionKey : error]
-//
-////                Util.showAlert(for: error?.localizedDescription ?? "Empty Description", in: viewController)
-//            }
-//
-//            guard (error == nil) else {
-//                sendError("There was an error with your request: \(error!.localizedDescription)")
-//                return
-//            }
-//
-//            guard let data = data else {
-//                sendError("No data was returned by the request!")
-//                return
-//            }
-//
-//            guard
-//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-//
-//                let image = UIImage(data: data)
-//                else { return }
-//
-//            performUIUpdatesOnMain {
-//                self.image = image
-//                callback?(image)
-//            }
-//        }.resume()
-//
-////        session.dataTask(with: request) { data, response, error in
-////            guard
-////                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-////                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-////                let data = data, error == nil,
-////                let image = UIImage(data: data)
-////                else { return }
-////
-////            performUIUpdatesOnMain {
-////                self.image = image
-////                callback?(image)
-////            }
-////
-////        }.resume()
-//    }
-    
-//    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit, callback: ((UIImage) -> Void)? = nil) {
-//        guard let url = URL(string: link) else { return }
-//        downloadedFrom(url: url, contentMode: mode, callback: callback)
-//    }
-}
-
 //from http://ioscake.com/how-to-get-start-date-and-end-date-of-the-current-month-swift-3.html
 extension Date {
+    
+    //from https://stackoverflow.com/a/24777965
+    init(from dateString: String, with format: String? = "yyyy-MM-dd") {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        
+        self = date
+        
+//        return date
+    }
+    
     func startOfMonth() -> Date? {
         let comp: DateComponents = Calendar.current.dateComponents([.year, .month, .hour], from: Calendar.current.startOfDay(for: self))
         return Calendar.current.date(from: comp)!
@@ -232,6 +183,7 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: self)
     }
+    
 }
 
 

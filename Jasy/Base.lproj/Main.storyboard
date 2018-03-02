@@ -73,17 +73,35 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KRI-T3-Y1x">
+                                <rect key="frame" x="0.0" y="568" width="320" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Kzh-wM-n4a"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ay8-gX-BpW" firstAttribute="top" secondItem="bAG-8R-0cM" secondAttribute="top" id="9ZJ-WM-KXd"/>
-                            <constraint firstItem="bAG-8R-0cM" firstAttribute="bottom" secondItem="ay8-gX-BpW" secondAttribute="bottom" id="IR9-Fu-0dt"/>
+                            <constraint firstItem="KRI-T3-Y1x" firstAttribute="top" secondItem="ay8-gX-BpW" secondAttribute="bottom" id="IQH-cu-Sev"/>
                             <constraint firstItem="ay8-gX-BpW" firstAttribute="leading" secondItem="bAG-8R-0cM" secondAttribute="leading" id="JJQ-G2-Jc6"/>
+                            <constraint firstItem="bAG-8R-0cM" firstAttribute="bottom" secondItem="KRI-T3-Y1x" secondAttribute="bottom" id="VVL-Fb-kfv"/>
+                            <constraint firstItem="KRI-T3-Y1x" firstAttribute="leading" secondItem="bAG-8R-0cM" secondAttribute="leading" id="WP4-v3-FCt"/>
                             <constraint firstItem="bAG-8R-0cM" firstAttribute="trailing" secondItem="ay8-gX-BpW" secondAttribute="trailing" id="XEt-l4-54M"/>
+                            <constraint firstItem="bAG-8R-0cM" firstAttribute="trailing" secondItem="KRI-T3-Y1x" secondAttribute="trailing" id="fpe-sx-fqL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bAG-8R-0cM"/>
                     </view>
                     <navigationItem key="navigationItem" title="February Apods" id="U7i-hC-3eK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="7Dj-B5-XRh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="searchButtonOnTap:" destination="ymU-XV-df8" id="Jet-HL-ZUN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="xcd-hp-Afq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -93,6 +111,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ay8-gX-BpW" id="a6C-za-Vzg"/>
+                        <outlet property="datePickerHeightConstraint" destination="Kzh-wM-n4a" id="CbF-fO-tjt"/>
+                        <outlet property="datePickerTextField" destination="KRI-T3-Y1x" id="Tau-SI-AbT"/>
                         <segue destination="eWi-yF-uUa" kind="show" id="e0n-jb-Mbv"/>
                     </connections>
                 </viewController>

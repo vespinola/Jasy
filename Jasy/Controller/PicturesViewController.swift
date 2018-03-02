@@ -13,6 +13,16 @@ import CoreData
 class PicturesViewController: CustomViewController {
 //    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var datePickerTextField: UITextField!
+    
+    let datePickerView: MonthYearPickerView = {
+        let datePickerView: MonthYearPickerView = MonthYearPickerView()
+        datePickerView.onDateSelected = { (mont: Int, year: Int) in
+            
+        }
+        return datePickerView
+    }()
     
     var apods: [Apod] = []
     
@@ -53,7 +63,20 @@ class PicturesViewController: CustomViewController {
         
         let textAttributes = [NSAttributedStringKey.foregroundColor:JColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
 
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+
+        datePickerTextField.inputAccessoryView = toolbar
+        datePickerTextField.inputView = datePickerView
+        
     }
     
     func getPhotosOfTheDay() {
@@ -84,6 +107,11 @@ class PicturesViewController: CustomViewController {
         }
         
         getPhotosOfTheDay()
+    }
+    
+    
+    @IBAction func searchButtonOnTap(_ sender: Any) {
+        datePickerTextField.becomeFirstResponder()
     }
     
 }
@@ -162,5 +190,17 @@ extension PicturesViewController {
             
             AppDelegate.stack?.save()
         }
+    }
+    
+    @objc func donedatePicker(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/yyyy"
+//        datePickerTextField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
     }
 }
