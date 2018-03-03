@@ -22,7 +22,7 @@ class PicturesViewController: CustomViewController {
     
     var apods: [Apod] = []
     
-    var selectedDate: String!
+    var selectedDate: Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,13 +64,26 @@ class PicturesViewController: CustomViewController {
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
 
+        toolbar.backgroundColor = JColor.blue
+        toolbar.barStyle = .blackOpaque
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
 
         datePickerTextField.inputAccessoryView = toolbar
         datePickerTextField.inputView = datePickerView
         
         datePickerView.onDateSelected = { (month: Int, year: Int) in
-            self.selectedDate = "\(year)-\(month)-01"
+            
+            //from https://stackoverflow.com/a/33344575
+            var dateComponents = DateComponents()
+            dateComponents.year = year
+            dateComponents.month = month
+            dateComponents.day = 1
+            
+            // Create date from components
+            let userCalendar = Calendar.current // user calendar
+            let someDateTime = userCalendar.date(from: dateComponents)
+
+            self.selectedDate = someDateTime
         }
         
     }
@@ -162,7 +175,7 @@ extension PicturesViewController {
     //MARK: Helpers
     @objc func doneDatePicker(){
         
-        let date = Date(from: selectedDate)
+        let date = selectedDate!
         
         let firstDate = date.startOfMonth()
         let endDate = date.endOfMonth()
