@@ -12,4 +12,5 @@ target 'Jasy' do
   pod 'R.swift', '~> 4.0'
   pod 'NVActivityIndicatorView'
   pod 'SnapKit', '~> 4.0'
+  pod 'Firebase/Messaging'
 end
