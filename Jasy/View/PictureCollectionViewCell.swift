@@ -44,6 +44,6 @@ class PictureCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        picture.image = nil
+        picture.image = R.image.astro()
     }
 }

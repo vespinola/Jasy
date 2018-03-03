@@ -11,20 +11,18 @@ import Firebase
 import CoreData
 
 class PicturesViewController: CustomViewController {
-//    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var datePickerTextField: UITextField!
     
     let datePickerView: MonthYearPickerView = {
         let datePickerView: MonthYearPickerView = MonthYearPickerView()
-        datePickerView.onDateSelected = { (mont: Int, year: Int) in
-            
-        }
         return datePickerView
     }()
     
     var apods: [Apod] = []
+    
+    var selectedDate: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +36,8 @@ class PicturesViewController: CustomViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         let now = Date()
-        title = "\(now.monthName!) Apods"
+        title = "Apods from \(now.monthName!) \(now.year!)"
 
-        if UserDefaults.standard.string(forKey: JUserDefaultsKeys.currentMonth) == nil {
-            UserDefaults.standard.set(now.monthName!, forKey: JUserDefaultsKeys.currentMonth)
-        }
-        
-        refreshMonthPicturesIfIsNeeded()
-        
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
@@ -68,7 +60,7 @@ class PicturesViewController: CustomViewController {
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
 
@@ -77,10 +69,14 @@ class PicturesViewController: CustomViewController {
         datePickerTextField.inputAccessoryView = toolbar
         datePickerTextField.inputView = datePickerView
         
+        datePickerView.onDateSelected = { (month: Int, year: Int) in
+            self.selectedDate = "\(year)-\(month)-01"
+        }
+        
     }
     
-    func getPhotosOfTheDay() {
-        NasaHandler.shared().getPhotoOfTheDays(in: self) {  apodsModel in
+    func getPhotosOfTheDay(with firstDate: String? = nil, and secondDate: String? = nil) {
+        NasaHandler.shared().getPhotoOfTheDays(startDate: firstDate, endDate: secondDate, in: self) {  apodsModel in
             self.apods = apodsModel.map { apodModel in
                 let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
                 return apod
@@ -100,13 +96,7 @@ class PicturesViewController: CustomViewController {
     }
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {
-        if let photos = fetchedResultsController?.fetchedObjects as? [Apod] {
-            for photo in photos {
-                AppDelegate.stack?.context.delete(photo)
-            }
-        }
-        
-        getPhotosOfTheDay()
+       refreshApods()
     }
     
     
@@ -170,37 +160,27 @@ extension PicturesViewController: UICollectionViewDelegateFlowLayout {
 
 extension PicturesViewController {
     //MARK: Helpers
-    
-    func refreshMonthPicturesIfIsNeeded () {
-        let userDefaults = UserDefaults.standard
+    @objc func doneDatePicker(){
         
-        let month = userDefaults.string(forKey: JUserDefaultsKeys.currentMonth)
-        let currentMonth = Date().monthName
+        let date = Date(from: selectedDate)
         
-        
-        if month != currentMonth {
-            userDefaults.set(currentMonth, forKey: JUserDefaultsKeys.currentMonth)
-            //todo: drop all pictures
-            
-            if let photos = fetchedResultsController?.fetchedObjects as? [Apod] {
-                for photo in photos {
-                    AppDelegate.stack?.context.delete(photo)
-                }
-            }
-            
-            AppDelegate.stack?.save()
-        }
-    }
-    
-    @objc func donedatePicker(){
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/yyyy"
-//        datePickerTextField.text = formatter.string(from: datePicker.date)
+        let firstDate = date.startOfMonth()
+        let endDate = date.endOfMonth()
+        self.refreshApods(with: firstDate?.formattedDate, and: endDate?.formattedDate)
         self.view.endEditing(true)
     }
     
     @objc func cancelDatePicker(){
         self.view.endEditing(true)
+    }
+    
+    func refreshApods(with firstDate: String? = nil, and secondDate: String? = nil){
+        if let photos = fetchedResultsController?.fetchedObjects as? [Apod] {
+            for photo in photos {
+                AppDelegate.stack?.context.delete(photo)
+            }
+        }
+        
+        getPhotosOfTheDay(with: firstDate, and: secondDate)
     }
 }

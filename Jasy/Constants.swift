@@ -93,5 +93,5 @@ struct JUserDefaultsKeys {
 }
 
 struct JConfig {
-    static let timeoutInterval = 20.0
+    static let timeoutInterval = 60.0
 }

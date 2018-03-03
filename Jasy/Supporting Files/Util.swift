@@ -152,8 +152,6 @@ extension Date {
         }
         
         self = date
-        
-//        return date
     }
     
     func startOfMonth() -> Date? {
@@ -176,6 +174,12 @@ extension Date {
         
         let index = Int(dateFormatter.string(from: self))! - 1
         return names[index]
+    }
+    
+    var year: String! {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
     }
     
     var formattedDate: String {
