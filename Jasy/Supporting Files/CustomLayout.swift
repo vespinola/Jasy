@@ -88,6 +88,7 @@ class CustomLayout: UICollectionViewLayout {
         super.invalidateLayout()
         
         cache.removeAll()
+        contentHeight = .leastNormalMagnitude
     }
 
 }
