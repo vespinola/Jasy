@@ -69,12 +69,14 @@ class Util {
     }
     
     class func downloadImageFrom(link: String, in viewController: CustomViewController, callback: ((Data) -> Void)? = nil) {
+        
+        guard !link.isEmpty else { return }
+        
         guard let url = URL(string: link) else { return }
         
         let session = URLSession.shared
         
         let request = NSMutableURLRequest(url: url)
-        request.timeoutInterval = JConfig.timeoutInterval
         
         session.dataTask(with: request as URLRequest) { data, response, error in
             
