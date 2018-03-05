@@ -29,6 +29,8 @@ class ApodDetailViewController: CustomViewController {
 
         title = apod.title
         
+        view.backgroundColor = JColor.background
+        
         picture.contentMode = .scaleAspectFit
         picture.backgroundColor = JColor.black
         
@@ -91,7 +93,15 @@ class ApodDetailViewController: CustomViewController {
             
             explanationButton.snp.makeConstraints {
                 $0.size.equalTo(CGSize(width: 30, height: 30))
-                $0.bottom.right.equalToSuperview().offset(-16)
+                
+                
+                if #available(iOS 11.0, *) {
+                    let bottomPadding = view.safeAreaInsets.bottom + 16
+                    $0.bottom.equalToSuperview().offset(-bottomPadding)
+                    $0.right.equalToSuperview().offset(-16)
+                } else {
+                    $0.bottom.right.equalToSuperview().offset(-16)
+                }
             }
         }
         
