@@ -20,9 +20,13 @@ class PicturesViewController: CustomViewController {
         return datePickerView
     }()
     
-    var apods: [Apod] = []
+    var selectedDate: Date! {
+        didSet {
+            title = "Apods - \(selectedDate.monthName!) \(selectedDate.year!)"
+        }
+    }
     
-    var selectedDate: Date!
+    var apods: [Apod] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +39,11 @@ class PicturesViewController: CustomViewController {
         
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
-        let now = Date()
-        title = "Apods from \(now.monthName!) \(now.year!)"
+        if let storedDate = UserDefaults.standard.value(forKey: JUserDefaultsKeys.currentMonth) as? Date {
+            selectedDate = storedDate
+        } else {
+            selectedDate = Date()
+        }
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
@@ -55,7 +62,6 @@ class PicturesViewController: CustomViewController {
         
         let textAttributes = [NSAttributedStringKey.foregroundColor:JColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
         
         //ToolBar
         let toolbar = UIToolbar();
@@ -84,6 +90,8 @@ class PicturesViewController: CustomViewController {
             let someDateTime = userCalendar.date(from: dateComponents)
 
             self.selectedDate = someDateTime
+            
+            UserDefaults.standard.set(self.selectedDate, forKey: JUserDefaultsKeys.currentMonth)
         }
         
     }
@@ -111,7 +119,6 @@ class PicturesViewController: CustomViewController {
     @IBAction func refreshButtonOnTap(_ sender: Any) {
        refreshApods()
     }
-    
     
     @IBAction func searchButtonOnTap(_ sender: Any) {
         datePickerTextField.becomeFirstResponder()
@@ -166,7 +173,7 @@ extension PicturesViewController: UICollectionViewDelegateFlowLayout {
         
         Analytics.logEvent("go_to_apod_detail", parameters: nil)
         
-        self.navigationController?.pushViewController(apodDetailViewController, animated: true)
+        navigationController?.pushViewController(apodDetailViewController, animated: true)
         
     }
 }
@@ -179,12 +186,12 @@ extension PicturesViewController {
         
         let firstDate = date.startOfMonth()
         let endDate = date.endOfMonth()
-        self.refreshApods(with: firstDate?.formattedDate, and: endDate?.formattedDate)
-        self.view.endEditing(true)
+        refreshApods(with: firstDate?.formattedDate, and: endDate?.formattedDate)
+        view.endEditing(true)
     }
     
     @objc func cancelDatePicker(){
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     func refreshApods(with firstDate: String? = nil, and secondDate: String? = nil){
