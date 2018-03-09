@@ -21,11 +21,6 @@ class PicturesViewController: CustomViewController {
     }()
     
     var selectedDate: Date!
-//    {
-//        didSet {
-//            title = "Apods - \(selectedDate.monthName!) \(selectedDate.yearString!)"
-//        }
-//    }
     
     var newTitle: String {
         return "Apods - \(selectedDate.monthName!) \(selectedDate.yearString!)"
@@ -148,25 +143,38 @@ extension PicturesViewController: UICollectionViewDataSource {
         
         if let image = currentApod.image {
             cell.picture.image = UIImage(data: image as Data)
+            cell.hideActivityIndicator()
         } else if var link = currentApod.url, let type = currentApod.mediaType {
             
             cell.titleLabel.isHidden = true
+            cell.dateLabel.isHidden = true
             
             if type == "video" {
                 link = Util.getYoutubeVideoThumbnail(for: link)
             }
             
-            Util.downloadImageFrom(link: link, for: cell.contentView, in: self) { image in
-                currentApod.image = image as NSData
-                
-                performUIUpdatesOnMain {
-                    cell.picture.image = UIImage(data: image)
-                    cell.titleLabel.isHidden = false
-                }
-                
-                AppDelegate.stack?.save()
-            }
+            cell.showActivityIndicator()
             
+            if type == "video" {
+                cell.hideActivityIndicator()
+                cell.picture.image = Util.getThumbnailImage(for: link)
+                cell.titleLabel.isHidden = false
+                cell.dateLabel.isHidden = false
+            } else {
+                Util.downloadImageFrom(link: link, for: cell.contentView, in: self) { image in
+                    cell.hideActivityIndicator()
+                    
+                    currentApod.image = image as NSData
+                    
+                    performUIUpdatesOnMain {
+                        cell.picture.image = UIImage(data: image)
+                        cell.titleLabel.isHidden = false
+                        cell.dateLabel.isHidden = false
+                    }
+                    
+                    AppDelegate.stack?.save()
+                }
+            }
         }
         
         cell.titleLabel.text = currentApod.title

@@ -50,6 +50,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yL-ua-e9y" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="126"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -58,14 +67,19 @@
                                             <constraint firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" id="Bsi-4X-xVt"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="leading" secondItem="yny-pH-Abn" secondAttribute="leading" constant="16" id="GJl-nl-OSv"/>
                                             <constraint firstItem="yny-pH-Abn" firstAttribute="leading" secondItem="gmy-8P-s0e" secondAttribute="leading" id="Htt-rJ-8Ia"/>
+                                            <constraint firstItem="5yL-ua-e9y" firstAttribute="top" secondItem="gmy-8P-s0e" secondAttribute="top" id="MZx-tp-5mE"/>
                                             <constraint firstItem="ZnE-EV-KFP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gmy-8P-s0e" secondAttribute="leading" symbolic="YES" id="NtC-WL-D5c"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" constant="-16" id="b5d-10-csV"/>
+                                            <constraint firstItem="5yL-ua-e9y" firstAttribute="leading" secondItem="gmy-8P-s0e" secondAttribute="leading" id="cvo-7j-HSb"/>
+                                            <constraint firstAttribute="trailing" secondItem="5yL-ua-e9y" secondAttribute="trailing" id="dRD-RO-AOg"/>
                                             <constraint firstItem="ZnE-EV-KFP" firstAttribute="trailing" secondItem="yny-pH-Abn" secondAttribute="trailing" constant="-8" id="f7H-mf-Fe7"/>
+                                            <constraint firstAttribute="bottom" secondItem="5yL-ua-e9y" secondAttribute="bottom" id="nFA-3R-Ksl"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="bottom" secondItem="yny-pH-Abn" secondAttribute="bottom" constant="-4" id="nJB-b5-Ngi"/>
                                             <constraint firstItem="nWe-pk-jwd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gmy-8P-s0e" secondAttribute="top" constant="30" id="uKD-DB-qNr"/>
                                             <constraint firstItem="yny-pH-Abn" firstAttribute="top" secondItem="gmy-8P-s0e" secondAttribute="top" id="wOe-ek-2P9"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="5yL-ua-e9y" id="3Sr-Qi-DDe"/>
                                             <outlet property="dateLabel" destination="ZnE-EV-KFP" id="v4R-7G-0fu"/>
                                             <outlet property="picture" destination="yny-pH-Abn" id="1ca-cf-JoC"/>
                                             <outlet property="titleLabel" destination="nWe-pk-jwd" id="QcM-lP-e4L"/>

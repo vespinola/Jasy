@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import AVFoundation
 
 typealias JDictionary = [String: Any]
 
@@ -69,6 +70,22 @@ class Util {
         }
     }
     
+    class func getThumbnailImage(for link: String) -> UIImage? {
+        guard let url = URL(string: link) else { return nil }
+        
+        let asset: AVAsset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        
+        do {
+            let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(1, 60) , actualTime: nil)
+            return UIImage(cgImage: thumbnailImage)
+        } catch let error {
+            print(error)
+        }
+        
+        return nil
+    }
+    
     class func downloadImageFrom(link: String, for view: UIView? = nil, in viewController: CustomViewController, callback: ((Data) -> Void)? = nil) {
         
         guard !link.isEmpty else { return }
@@ -79,17 +96,7 @@ class Util {
         
         let request = NSMutableURLRequest(url: url)
         
-        let activityIndicator = NVActivityIndicatorView(frame: view?.frame ?? .zero, type: .lineScalePulseOutRapid, color: JColor.white, padding: 30)
-        activityIndicator.center = view?.center ?? .zero
-        view?.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
-        
         session.dataTask(with: request as URLRequest) { data, response, error in
-            
-            performUIUpdatesOnMain {
-                activityIndicator.removeFromSuperview()
-            }
             
             func sendError(_ error: String) {
                 let userInfo = [NSLocalizedDescriptionKey : error]
@@ -133,6 +140,17 @@ class Util {
         }
         
         return ""
+    }
+    
+    class func share(item: Any, in viewcontroller: UIViewController, onCompletion: (() -> Void)? = nil) {
+        let activityViewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = viewcontroller.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        viewcontroller.present(activityViewController, animated: true, completion: onCompletion)
     }
 }
 

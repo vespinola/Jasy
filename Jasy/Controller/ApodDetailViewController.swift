@@ -39,6 +39,8 @@ class ApodDetailViewController: CustomViewController {
         scrollView.delegate = self
         scrollView.backgroundColor = UIColor.black
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
+        
         if let hdimage = apod.hdimage {
             performUIUpdatesOnMain {
                 self.picture.image = UIImage(data: hdimage as Data)
@@ -125,5 +127,12 @@ extension ApodDetailViewController: WKNavigationDelegate {
     }
 }
 
+
+extension ApodDetailViewController {
+    @objc func shareImage() {
+        guard let image = UIImage(data: apod.image! as Data) else { return }
+        Util.share(item: image, in: self)
+    }
+}
 
 
