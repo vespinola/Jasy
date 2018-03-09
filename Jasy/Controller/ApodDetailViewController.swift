@@ -130,8 +130,12 @@ extension ApodDetailViewController: WKNavigationDelegate {
 
 extension ApodDetailViewController {
     @objc func shareImage() {
-        guard let image = UIImage(data: apod.image! as Data) else { return }
-        Util.share(item: image, in: self)
+        if let url = apod.url, let media = apod.mediaType, media == "video" {
+            Util.share(item: URL(string: url)!, in: self)
+        } else {
+            guard let image = UIImage(data: apod.image! as Data) else { return }
+            Util.share(item: image, in: self)
+        }
     }
 }
 
