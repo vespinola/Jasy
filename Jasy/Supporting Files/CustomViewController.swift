@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import NVActivityIndicatorView
 
-class CustomViewController: UIViewController {
+class CustomViewController: UIViewController, NVActivityIndicatorViewable {
     
     let alphaPercentage: CGFloat = 0.7
     var activityIndicator: NVActivityIndicatorView? = nil
@@ -33,39 +33,18 @@ class CustomViewController: UIViewController {
         navigationItem.backBarButtonItem = backItem
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let window = UIApplication.shared.keyWindow!
-        cover?.frame = CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height)
-        activityIndicator?.center = self.view.center
-    }
-    
     func showActivityIndicator() {
         performUIUpdatesOnMain {
-            let window = UIApplication.shared.keyWindow!
-            self.cover = UIView(frame: CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height))
-            self.cover?.backgroundColor = JColor.black.withAlphaComponent(0.6)
-            self.cover?.tag = 101
-            self.view.addSubview(self.cover!)
+            self.startAnimating(CGSize(width: 40, height: 40), type: .ballTrianglePath, color: JColor.background, backgroundColor: JColor.black.withAlphaComponent(0.7))
+            NVActivityIndicatorPresenter.sharedInstance.setMessage("Wait a moment, please...")
             
-            self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballTrianglePath, color: JColor.background)
-            self.activityIndicator?.center = self.view.center
-            self.activityIndicator?.tag = 100
-            self.view.addSubview(self.activityIndicator!)
-            self.activityIndicator?.startAnimating()
         }
         
     }
     
     func hideActivityIndicator() {
         performUIUpdatesOnMain {
-            if let view = self.view.viewWithTag(100) {
-                view.removeFromSuperview()
-            }
-            
-            if let view = self.view.viewWithTag(101) {
-                view.removeFromSuperview()
-            }
+            self.stopAnimating()
         }
     }
 
@@ -77,7 +56,7 @@ extension CustomViewController {
         if let fc = fetchedResultsController {
             do {
                 try fc.performFetch()
-            } catch let e as NSError {
+            } catch _ as NSError {
                 //print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
             }
         }

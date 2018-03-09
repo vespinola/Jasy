@@ -20,10 +20,15 @@ class PicturesViewController: CustomViewController {
         return datePickerView
     }()
     
-    var selectedDate: Date! {
-        didSet {
-            title = "Apods - \(selectedDate.monthName!) \(selectedDate.yearString!)"
-        }
+    var selectedDate: Date!
+//    {
+//        didSet {
+//            title = "Apods - \(selectedDate.monthName!) \(selectedDate.yearString!)"
+//        }
+//    }
+    
+    var newTitle: String {
+        return "Apods - \(selectedDate.monthName!) \(selectedDate.yearString!)"
     }
     
     var apods: [Apod] = []
@@ -44,6 +49,7 @@ class PicturesViewController: CustomViewController {
         } else {
             selectedDate = Date()
         }
+        title = newTitle
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
         fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
@@ -90,14 +96,15 @@ class PicturesViewController: CustomViewController {
             let someDateTime = userCalendar.date(from: dateComponents)
 
             self.selectedDate = someDateTime
-            
-            UserDefaults.standard.set(self.selectedDate, forKey: JUserDefaultsKeys.currentMonth)
         }
         
     }
     
     func getPhotosOfTheDay(with firstDate: String? = nil, and secondDate: String? = nil) {
         NasaHandler.shared().getPhotoOfTheDays(startDate: firstDate, endDate: secondDate, in: self) {  apodsModel in
+            
+            UserDefaults.standard.set(self.selectedDate, forKey: JUserDefaultsKeys.currentMonth)
+            
             self.apods = apodsModel.map { apodModel in
                 let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
                 return apod
@@ -106,6 +113,7 @@ class PicturesViewController: CustomViewController {
             AppDelegate.stack?.save()
             
             performUIUpdatesOnMain {
+                self.title = self.newTitle
                 self.collectionView.reloadData()
             }
         }
