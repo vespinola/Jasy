@@ -117,7 +117,8 @@ class PicturesViewController: CustomViewController {
     }
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {
-       refreshApods()
+        selectedDate = Date()
+        refreshApods()
     }
     
     @IBAction func searchButtonOnTap(_ sender: Any) {
