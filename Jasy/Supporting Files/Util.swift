@@ -178,10 +178,20 @@ extension Date {
         return names[index]
     }
     
-    var year: String! {
+    var yearString: String! {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         return dateFormatter.string(from: self)
+    }
+    
+    var month: Int! {
+        let comp: DateComponents = Calendar.current.dateComponents([.month], from: Calendar.current.startOfDay(for: self))
+        return comp.month
+    }
+    
+    var year: Int! {
+        let comp: DateComponents = Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: self))
+        return comp.year
     }
     
     var formattedDate: String {

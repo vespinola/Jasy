@@ -22,7 +22,7 @@ class PicturesViewController: CustomViewController {
     
     var selectedDate: Date! {
         didSet {
-            title = "Apods - \(selectedDate.monthName!) \(selectedDate.year!)"
+            title = "Apods - \(selectedDate.monthName!) \(selectedDate.yearString!)"
         }
     }
     

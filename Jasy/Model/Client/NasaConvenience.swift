@@ -16,7 +16,16 @@ extension NasaHandler {
         var secondDate = date.formattedDate
         
         if let startDate = startDate {
-            firstDate = startDate
+            
+            let currentFirstDate = Date(from: startDate)
+            
+            //This is a special api case. The beginnig.
+            if currentFirstDate.month == 6, currentFirstDate.year == 1995 {
+                firstDate = "1995-06-16"
+            } else {
+                firstDate = startDate
+            }
+            
         }
         
         if let endDate = endDate {
