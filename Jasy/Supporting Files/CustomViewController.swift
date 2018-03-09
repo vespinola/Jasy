@@ -35,7 +35,7 @@ class CustomViewController: UIViewController, NVActivityIndicatorViewable {
     
     func showActivityIndicator() {
         performUIUpdatesOnMain {
-            self.startAnimating(CGSize(width: 40, height: 40), type: .ballTrianglePath, color: JColor.background, backgroundColor: JColor.black.withAlphaComponent(0.7))
+            self.startAnimating(CGSize(width: 40, height: 40), type: .ballTrianglePath, color: JColor.background, backgroundColor: JColor.black.withAlphaComponent(0.7), textColor: JColor.white)
             NVActivityIndicatorPresenter.sharedInstance.setMessage("Wait a moment, please...")
             
         }
