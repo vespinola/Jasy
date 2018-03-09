@@ -46,6 +46,12 @@ func runIn(seconds: Double, callback: @escaping () -> Void) {
 
 class Util {
     
+    class func getDate(for dateString: String) -> Date? {
+        let dateFormatterDate = DateFormatter()
+        dateFormatterDate.dateFormat = "yyyy-MM-dd"
+        return dateFormatterDate.date(from: dateString)
+    }
+    
     class func showAlert(for message: String, in viewController: UIViewController) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: nil))

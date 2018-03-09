@@ -17,7 +17,7 @@ extension NasaHandler {
         
         if let startDate = startDate {
             
-            let currentFirstDate = Date(from: startDate)
+            let currentFirstDate = Util.getDate(for: startDate) ?? date
             
             //This is a special api case. The beginnig.
             if currentFirstDate.month == 6, currentFirstDate.year == 1995 {
