@@ -150,15 +150,18 @@ extension PicturesViewController: UICollectionViewDataSource {
             cell.picture.image = UIImage(data: image as Data)
         } else if var link = currentApod.url, let type = currentApod.mediaType {
             
+            cell.titleLabel.isHidden = true
+            
             if type == "video" {
                 link = Util.getYoutubeVideoThumbnail(for: link)
             }
             
-            Util.downloadImageFrom(link: link, in: self) { image in
+            Util.downloadImageFrom(link: link, for: cell.contentView, in: self) { image in
                 currentApod.image = image as NSData
                 
                 performUIUpdatesOnMain {
                     cell.picture.image = UIImage(data: image)
+                    cell.titleLabel.isHidden = false
                 }
                 
                 AppDelegate.stack?.save()

@@ -45,8 +45,9 @@ struct JFont {
 }
 
 struct JMetric {
-    static let cornerRadius: CGFloat = 6.0
+    static let cornerRadius: CGFloat = 6
     static let borderWidth: CGFloat = 1
+    static let standardMinSpace: CGFloat = 8
 }
 
 struct JColor {

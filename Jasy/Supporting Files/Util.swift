@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 typealias JDictionary = [String: Any]
 
@@ -68,7 +69,7 @@ class Util {
         }
     }
     
-    class func downloadImageFrom(link: String, in viewController: CustomViewController, callback: ((Data) -> Void)? = nil) {
+    class func downloadImageFrom(link: String, for view: UIView? = nil, in viewController: CustomViewController, callback: ((Data) -> Void)? = nil) {
         
         guard !link.isEmpty else { return }
         
@@ -78,7 +79,17 @@ class Util {
         
         let request = NSMutableURLRequest(url: url)
         
+        let activityIndicator = NVActivityIndicatorView(frame: view?.frame ?? .zero, type: .lineScalePulseOutRapid, color: JColor.white, padding: 30)
+        activityIndicator.center = view?.center ?? .zero
+        view?.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
         session.dataTask(with: request as URLRequest) { data, response, error in
+            
+            performUIUpdatesOnMain {
+                activityIndicator.removeFromSuperview()
+            }
             
             func sendError(_ error: String) {
                 let userInfo = [NSLocalizedDescriptionKey : error]
