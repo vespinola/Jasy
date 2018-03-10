@@ -6,10 +6,10 @@ The refresh button gets the lastest apods.
 
 Users can tap a picture, zoom it and read its explanation.
 
-![alt text](https://github.com/vlados456/Jasy/blob/master/screen-1.png)
-![alt text](https://github.com/vlados456/Jasy/blob/master/screen-2.png)
-![alt text](https://github.com/vlados456/Jasy/blob/master/screen-3.1.png)
-![alt text](https://github.com/vlados456/Jasy/blob/master/screen-4.png)
+![alt text](https://github.com/vlados456/Jasy/blob/master/Screenshots/screen-1.png)
+![alt text](https://github.com/vlados456/Jasy/blob/master/Screenshots/screen-2.png)
+![alt text](https://github.com/vlados456/Jasy/blob/master/Screenshots/screen-3.1.png)
+![alt text](https://github.com/vlados456/Jasy/blob/master/Screenshots/screen-4.png)
 
 
 ## Requirements
