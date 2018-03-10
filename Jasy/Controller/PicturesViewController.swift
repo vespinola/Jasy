@@ -144,15 +144,10 @@ extension PicturesViewController: UICollectionViewDataSource {
         if let image = currentApod.image {
             cell.picture.image = UIImage(data: image as Data)
             cell.hideActivityIndicator()
-        } else if var link = currentApod.url, let type = currentApod.mediaType {
+        } else if let link = currentApod.url, let type = currentApod.mediaType {
             
             cell.titleLabel.isHidden = true
             cell.dateLabel.isHidden = true
-            
-            if type == "video" {
-                link = Util.getYoutubeVideoThumbnail(for: link)
-            }
-            
             cell.showActivityIndicator()
             
             if type == "video" {
