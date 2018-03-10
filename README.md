@@ -2,7 +2,7 @@
 
 Jasy(moon, in guarani language) is an iOS app that works with Astronomy Picture of the Day API service(APOD). Users can search apods by month and year, between 1995-06-16 and the current day. All filtered apods will be shown in a collection.
 
-The refresh button gets the lastest apods.
+The refresh button gets the latest apods.
 
 Users can tap a picture, zoom it and read its explanation.
 
@@ -19,6 +19,7 @@ Users can tap a picture, zoom it and read its explanation.
 ## Running Project
 - Download or clone repository  
 - Open Jasy.xcworkspace
+- It is not necessary to run pod install
 
 ## Author
 
