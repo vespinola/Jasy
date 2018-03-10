@@ -67,7 +67,7 @@ struct JColor {
     static let ocher = UIColor(netHex: 0x847E79)
     static let lead = UIColor(netHex: 0x5B5149)
     static let cyan = UIColor(netHex: 0x0084AB)
-    static let alternate = UIColor(netHex: 0xFAF8F7) // not taken from the design rules PDF but from the prototype PDF
+    static let alternate = UIColor(netHex: 0xFAF8F7) 
     
     // secondary colors
     static let orangeStart = UIColor(netHex: 0xFF7500)
