@@ -52,9 +52,11 @@ class Util {
         return dateFormatterDate.date(from: dateString)
     }
     
-    class func showAlert(for message: String, in viewController: UIViewController) {
+    class func showAlert(for message: String, in viewController: UIViewController, callback: (() -> Void)? = nil) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler:  { _ in
+            callback?()
+        }))
         viewController.present(alert, animated: true, completion: nil)
     }
     
@@ -108,8 +110,10 @@ class Util {
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 
                 let error = NSError(domain: "taskForMethod", code: 1, userInfo: userInfo)
-                
-                Util.showAlert(for: error.localizedDescription, in: viewController)
+                viewController.hideActivityIndicator()
+                Util.showAlert(for: error.localizedDescription, in: viewController) {
+                    viewController.navigationController?.popViewController(animated: true)
+                }
             }
             
             guard (error == nil) else {

@@ -125,6 +125,14 @@ extension ApodDetailViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         showActivityIndicator()
     }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        hideActivityIndicator()
+        
+        Util.showAlert(for: error.localizedDescription, in: self) {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 }
 
 
