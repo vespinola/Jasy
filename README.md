@@ -22,7 +22,7 @@ Users can tap a picture, zoom it and read its explanation.
 
 ## Author
 
-* **Vladimir Espinola Lezcano**
+* **[Vladimir Espinola Lezcano](https://www.linkedin.com/in/vladimir-espinola-lezcano-012464a2/)**
 
 ## License
 
