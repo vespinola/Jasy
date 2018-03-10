@@ -19,7 +19,6 @@ class CustomViewController: UIViewController, NVActivityIndicatorViewable {
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>? {
         didSet {
             // Whenever the frc changes, we execute the search and
-            print("COUNT: \(fetchedResultsController?.sections?.first?.numberOfObjects ?? 0)")
             fetchedResultsController?.delegate = self
             executeSearch()
         }
@@ -56,8 +55,8 @@ extension CustomViewController {
         if let fc = fetchedResultsController {
             do {
                 try fc.performFetch()
-            } catch _ as NSError {
-                //print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
+            } catch let e as NSError {
+                print("Error while trying to perform a search: \n\(e)")
             }
         }
     }
