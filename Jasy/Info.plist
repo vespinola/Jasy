@@ -38,10 +38,10 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>La aplicación requiere acceso a tu galería de fotos para guardar una imagen.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>La aplicación requiere acceso a tu galería de fotos para guardar una imagen.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>The application requires access to your photo gallery to save an image.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>The application requires access to your photo gallery to save an image.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
