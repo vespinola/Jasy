@@ -47,7 +47,7 @@ class PicturesViewController: CustomViewController {
         title = newTitle
 
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Apod")
-        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.stack!.context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -92,6 +92,11 @@ class PicturesViewController: CustomViewController {
 
             self.selectedDate = someDateTime
         }
+        
+        let refreshControll = UIRefreshControl()
+        refreshControll.tintColor = JColor.blue
+        refreshControll.addTarget(self, action: #selector(refreshButtonOnTap(_:)), for: .valueChanged)
+        collectionView.addSubview(refreshControll)
         
     }
     

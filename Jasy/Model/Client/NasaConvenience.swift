@@ -54,7 +54,7 @@ extension NasaHandler {
             }
             
             if let dictionary = data as? [JDictionary] {
-                let apods = ApodModel.photosFromResults(dictionary)
+                let apods = ApodModel.photosFromResults(dictionary).sorted(by: { $0.date > $1.date })
                 onCompletion?(apods)
             } else if let dictionary = data as? JDictionary, let message = dictionary["msg"] as? String {
                 Util.showAlert(for: message, in: viewController)
