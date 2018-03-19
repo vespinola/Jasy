@@ -28,6 +28,8 @@ class PicturesViewController: CustomViewController {
     
     var apods: [Apod] = []
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,10 +95,10 @@ class PicturesViewController: CustomViewController {
             self.selectedDate = someDateTime
         }
         
-        let refreshControll = UIRefreshControl()
-        refreshControll.tintColor = JColor.blue
-        refreshControll.addTarget(self, action: #selector(refreshButtonOnTap(_:)), for: .valueChanged)
-        collectionView.addSubview(refreshControll)
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = JColor.blue
+        refreshControl.addTarget(self, action: #selector(refreshButtonOnTap(_:)), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
         
     }
     
@@ -125,6 +127,7 @@ class PicturesViewController: CustomViewController {
     }
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {
+        refreshControl.endRefreshing()
         selectedDate = Date()
         refreshApods()
     }
