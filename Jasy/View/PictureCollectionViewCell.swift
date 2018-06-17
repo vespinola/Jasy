@@ -38,9 +38,9 @@ class PictureCollectionViewCell: UICollectionViewCell {
         
         picture.layer.masksToBounds = true
         picture.layer.cornerRadius = JMetric.cornerRadius
-        
         activityIndicator.type = .lineScalePulseOutRapid
         activityIndicator.padding = 30
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
     }
     
     override func prepareForReuse() {

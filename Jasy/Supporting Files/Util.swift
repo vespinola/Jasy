@@ -239,6 +239,11 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func isInTheSameRange(with date: Date) -> Bool {
+        let result = (self.month == date.month) && (self.year == date.year)
+        return result
+    }
+    
 }
 
 

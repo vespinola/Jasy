@@ -45,6 +45,7 @@ class PicturesViewController: CustomViewController {
             selectedDate = storedDate
         } else {
             selectedDate = Date()
+//            selectedDate = Date(from: "2018-06-14")
         }
         title = newTitle
 
@@ -54,13 +55,11 @@ class PicturesViewController: CustomViewController {
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.stack!.context, sectionNameKeyPath: nil, cacheName: nil)
         
         if let apods = fetchedResultsController?.fetchedObjects as? [Apod] {
-            
             if apods.isEmpty {
-                getPhotosOfTheDay()
+                getPhotosOfTheDay(with: selectedDate.startOfMonth()!.formattedDate, and: selectedDate.formattedDate)
             } else {
                 self.apods = apods
             }
-            
         }
         
         let textAttributes = [NSAttributedStringKey.foregroundColor:JColor.white]
@@ -99,17 +98,23 @@ class PicturesViewController: CustomViewController {
         refreshControl.tintColor = JColor.blue
         refreshControl.addTarget(self, action: #selector(refreshButtonOnTap(_:)), for: .valueChanged)
         collectionView.addSubview(refreshControl)
-        
     }
     
     func getPhotosOfTheDay(with firstDate: String? = nil, and secondDate: String? = nil) {
+        
         NasaHandler.shared().getPhotoOfTheDays(startDate: firstDate, endDate: secondDate, in: self) {  apodsModel in
             
             UserDefaults.standard.set(self.selectedDate, forKey: JUserDefaultsKeys.currentMonth)
             
-            self.apods = apodsModel.map { apodModel in
+            let returnedApods = apodsModel.map { apodModel -> Apod in
                 let apod = Apod(apod: apodModel, context: AppDelegate.stack!.context)
                 return apod
+            }
+            
+            if self.apods.isEmpty {
+                self.apods = returnedApods
+            } else {
+                self.apods = returnedApods + self.apods
             }
             
             AppDelegate.stack?.save()
@@ -128,12 +133,38 @@ class PicturesViewController: CustomViewController {
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {
         refreshControl.endRefreshing()
-        selectedDate = Date()
-        refreshApods()
+        
+        performRefreshAction()
     }
     
     @IBAction func searchButtonOnTap(_ sender: Any) {
         datePickerTextField.becomeFirstResponder()
+    }
+    
+    func performRefreshAction() {
+        let currentDate = Date()
+        
+        self.selectedDate = currentDate
+        
+        guard let firstApod = apods.first, let firstApodDateString = firstApod.date else {
+            refreshApods()
+            return
+        }
+        
+        let firstApodDate = Date(from: firstApodDateString)
+        
+        if firstApodDate.formattedDate == currentDate.formattedDate {
+            return
+        }
+        
+        guard firstApodDate.isInTheSameRange(with: currentDate) else {
+            refreshApods()
+            return
+        }
+        
+        let newFirstDate =  Calendar.current.date(byAdding: .day, value: 1, to: firstApodDate)!
+        
+        refreshApods(with: newFirstDate.formattedDate, and: currentDate.formattedDate, clear: false)
     }
     
 }
@@ -217,8 +248,8 @@ extension PicturesViewController {
         view.endEditing(true)
     }
     
-    func refreshApods(with firstDate: String? = nil, and secondDate: String? = nil){
-        if let photos = fetchedResultsController?.fetchedObjects as? [Apod] {
+    func refreshApods(with firstDate: String? = nil, and secondDate: String? = nil, clear: Bool = true){
+        if let photos = fetchedResultsController?.fetchedObjects as? [Apod], clear {
             for photo in photos {
                 AppDelegate.stack?.context.delete(photo)
             }
